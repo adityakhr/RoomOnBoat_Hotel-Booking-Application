@@ -6,7 +6,7 @@ Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoa
 	<be>
 		<img src="Logo/RoomOnBoatLogo.png" alt="Logo" style="width:50%" >
 </p>
-Here in this project you can find some entity classes which are as follows..
+Here in this project you can find some entity classes which are as follows..<br>
 1. Host
 2. Users
 3. Booking
