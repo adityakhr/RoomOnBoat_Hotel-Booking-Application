@@ -15,7 +15,10 @@ Here in this project you can find some entity classes which are as follows..<br>
 <br>
 As the names are indicating they are entity classes for generating the various tables and their relations, you can have a look and find the relations between them in below diagram.<br>
 
-<img src=Logo/Untitled.png style="width:100%" >
+<p align="center">
+	<br>
+		<img src=Logo/Untitled.png style="width:100%" >
+</p>
 
 <br><br>
 I have give two sides in this applications...<br><br>
