@@ -1,9 +1,9 @@
 # RoomOnBoat A Hotel Booking Application
 
 Hello,<br>
-Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoat". You can find logo below of my Application.<br>
+Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoat". You can find logo below of my Application.<be><br>
 <img src="Logo/RoomOnBoatLogo.png" align="center" alt="Logo" style="width:60%" >
-<br>
+<be><br>
 Here in this project you can find some entity classes which are as follows..<br>
 1. Host
 2. Users
