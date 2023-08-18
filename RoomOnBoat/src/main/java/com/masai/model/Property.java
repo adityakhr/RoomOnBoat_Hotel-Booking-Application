@@ -3,8 +3,8 @@ package com.masai.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,18 +28,15 @@ public class Property {
 	@NotNull(message = "Name can't be Null")
 	@NotEmpty(message = "Name can't be Empty")
 	@NotBlank(message = "Name can't be Blank")
+	@Column(unique = true)
 	private String name;
 	@NotNull(message = "Location can't be Null")
 	@NotEmpty(message = "Location can't be Empty")
 	@NotBlank(message = "Location can't be Blank")
 	private String location;
-	
-	
-	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Host host;
-	@JsonIgnore
-	@OneToMany(mappedBy = "property",cascade =CascadeType.ALL)
+	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Room> rooms;
 }
