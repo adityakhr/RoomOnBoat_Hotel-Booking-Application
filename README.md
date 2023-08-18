@@ -1,19 +1,15 @@
 # RoomOnBoat A Hotel Booking Application
 
 Hello,<br>
-Welcome to the Online Food Delivery Application System, I named it as "FlavorDrop". You can find logo below of my Application.<br>
-<img align=center src="Logo/RoomOnBoatLogo.png" alt="Logo" style="width:60%" >
+Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoat". You can find logo below of my Application.<br>
+<img src="Logo/RoomOnBoatLogo.png" align="center" alt="Logo" style="width:60%" >
 <br>
 Here in this project you can find some entity classes which are as follows..<br>
-1. admin
-2. bill
-3. category
-4. customer
-5. customerfoodcart
-6. customerorders
-7. item
-8. order
-9. restaurant
+1. Host
+2. Users
+3. Booking
+4. Property
+5. Room
 <br>
 As the names are indicating they are entity classes for generating the various tables and their relations, you can have a look and find the relations between them in below diagram.<br>
 
