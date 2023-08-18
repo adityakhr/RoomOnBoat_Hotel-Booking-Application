@@ -22,7 +22,7 @@ As the names are indicating they are entity classes for generating the various t
 
 <br><br>
 I have give two sides in this applications...<br><br>
-Admin Functionality.....
+Host Functionality.....
   <br>
   <br>
   for using admin functionality you have to login as Admin.<br>
