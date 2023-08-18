@@ -1,7 +1,7 @@
 # RoomOnBoat A Hotel Booking Application
 
 Hello,<br>
-Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoat". You can find logo below of my Application.<be>
+Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoat". You can find logo below of my Application.<br>
 <p align="center">
 	<be>
 		<img src="Logo/RoomOnBoatLogo.png" alt="Logo" style="width:50%" >
