@@ -1,4 +1,5 @@
 # RoomOnBoat A Hotel Booking Application
-
-Find the logo below for the Application:
-<img src="Logo/RoomOnBoatLogo.png" alt="Logo" width="500" height="600">
+<br><br>
+Find the logo below for the Application:<br>
+<img src="Logo/RoomOnBoatLogo.png" alt="Logo" width="250" height="400">
+<br><br>
