@@ -8,13 +8,9 @@ Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoa
 </p>
 Here in this project you can find some entity classes which are as follows..<br>
 1. Host
-		
 2. Users
-
 3. Booking
-
 4. Property
-
 5. Room
 <br>
 As the names are indicating they are entity classes for generating the various tables and their relations, you can have a look and find the relations between them in below diagram.<br>
