@@ -42,7 +42,7 @@
        <appender-ref ref="CONSOLE"/>
     </root>
 
-    <logger name="com.example" additivity="false" level="ALL">
+    <logger name="com.masai" additivity="false" level="ALL">
        <appender-ref ref="CONSOLE"/>
        <appender-ref ref="LOG_INFO"/>
        <appender-ref ref="LOG_ERROR"/>

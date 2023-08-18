@@ -6,5 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import com.masai.model.Property;
 
 public interface PropertyRepository extends JpaRepository<Property, Integer>, PagingAndSortingRepository<Property, Integer>{
+	
 
 }
