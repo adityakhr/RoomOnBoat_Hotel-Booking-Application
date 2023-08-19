@@ -85,6 +85,15 @@ User Functionality.....
  	10-> Delete room(end point=>'http://localhost:8080/host/{hostId}/property/{propertyId}/delete_room/{roomId})<br>
         11-> Delete Property(end point=>'http://localhost:8080/host/{hostId}/delete_property/{propertyId}')<br>
 <br>
+
+<br>
+<P>
+	If you have Java 17 installed in your machine you can run this application in you machine for that here is the jar file below...<br>
+	<br>
+	Get the .jar file <a href="Logo/">here</a><br>
+</P>
+<br>
+
 <br>
 These were the some functionality of my application.
 <br>
