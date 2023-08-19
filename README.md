@@ -25,10 +25,29 @@ I have give three sides in this applications...<br><br>
 Admin Functionality.....
   <br>
   <br>
-  for using admin functionality you have to login as Admin.<br>
+  For using admin functionality you have to login as Admin.<br>
   Admin can do....
   <br>
-    1 -> Add admin Only from user or Host (end points=>'http://localhost:8080/host/add_admin/host/{hostId}' or 'http://localhost:8080/host/add_admin/host/{userId}')<br>
+    1 -> Add admin Only from user or Host (end points=>'http://localhost:8080/admin/add_admin/host/{hostId}' or 'http://localhost:8080/admin/add_admin/host/{userId}')<br>
+	2 -> Delete user (end point=>'http://localhost:8080/admin/delete_host/{userId}')<br>
+	3 -> Delete host (end point=>'http://localhost:8080/admin/delete_host/{hostId}')<br>
+	4 -> Show users (end point=>'http://localhost:8080/admin/get_users')<br>
+	5 -> Show hosts (end point=>'http://localhost:8080/admin/get_hosts')<br>
+	6 -> Show Properties(end point=>'http://localhost:8080/admin/get_properties')<br>
+	7 -> Show Rooms(end point=>'http://localhost:8080/admin/get_rooms')<br>
+	8 -> Delete Property(end point=>'http://localhost:8080/admin/delete_property/{propertyId}')<br>
+	9 -> Delete Room(end point=>'http://localhost:8080/admin/delete_room/{roomId})<br>
+ 	10-> Show admins(end point=>'http://localhost:8080/admin/get_admins)
+<br>
+<br>
+Host Functionality.....
+<br>
+<br>
+  For using Host Functionality you have to login as Host.
+  <br>
+  Host can do...
+  <br>
+       1 -> Add admin Only from user or Host (end points=>'http://localhost:8080/host/add_admin/host/{hostId}' or 'http://localhost:8080/host/add_admin/host/{userId}')<br>
 	2 -> Delete user (end point=>'http://localhost:8080/host/delete_host/{userId}')<br>
 	3 -> Delete host (end point=>'http://localhost:8080/host/delete_host/{hostId}')<br>
 	4 -> Show users (end point=>'http://localhost:8080/host/get_users')<br>
@@ -38,20 +57,6 @@ Admin Functionality.....
 	8 -> Delete Property(end point=>'http://localhost:8080/host/delete_property/{propertyId}')<br>
 	9 -> Delete Room(end point=>'http://localhost:8080/host/delete_room/{roomId})<br>
  	10-> Show admins(end point=>'http://localhost:8080/host/get_admins)
-<br>
-<br>
-Customer Functionality.....
-<br>
-<br>
-  for using Customer Functionality you have to login as Customer(if you have valid credential or you can Sign Up first and then Log In).
-  <br>
-  Customer can do...
-  <br>
-    1 -> List of restaurants & their food items<br>
-	2 -> Order food<br>
-	3 -> Checkout<br>
-	4 -> Update details<br>
-	0 -> Log out<br>
 <br>
 <br>
 These were the some functionality of my application.
