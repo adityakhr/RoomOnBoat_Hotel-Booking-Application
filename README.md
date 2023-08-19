@@ -66,6 +66,26 @@ Host Functionality.....
         11-> Delete Property(end point=>'http://localhost:8080/host/{hostId}/delete_property/{propertyId}')<br>
 <br>
 <br>
+User Functionality.....
+<br>
+<br>
+  For using User Functionality you have to login as User.
+  <br>
+  User can do...
+  <br>
+       1 -> Add property in his profile (end points=>'http://localhost:8080/host/{hostId}/properties')<br>
+	2 -> Add room to his Property (end point=>'http://localhost:8080/host/{userId}/property/{propertyId}/rooms')<br>
+	3 -> See his property (end point=>'http://localhost:8080/host/{hostId}/properties')<br>
+	4 -> See his property's rooms (end point=>'http://localhost:8080/host/{hostId}/property/{propertyId}/rooms')<br>
+	5 -> Update email (end point=>'http://localhost:8080/host/{hostId}/update_email')<br>
+	6 -> Update password(end point=>'http://localhost:8080/host/{hostId}/update_password')<br>
+	7 -> Update name(end point=>'http://localhost:8080/host/{hostId}/update_name')<br>
+	8 -> Delete account(end point=>'http://localhost:8080/host/{hostId}/delete_account')<br>
+	9 -> Update Booking Status(end point=>'http://localhost:8080/host/{hostId}/update_status/booking/{bookingId}')<br>
+ 	10-> Delete room(end point=>'http://localhost:8080/host/{hostId}/property/{propertyId}/delete_room/{roomId})<br>
+        11-> Delete Property(end point=>'http://localhost:8080/host/{hostId}/delete_property/{propertyId}')<br>
+<br>
+<br>
 These were the some functionality of my application.
 <br>
 Thankyou.....
