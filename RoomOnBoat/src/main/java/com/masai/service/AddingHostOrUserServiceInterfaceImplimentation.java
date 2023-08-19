@@ -1,6 +1,5 @@
 package com.masai.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +19,15 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class AddingAndDeletingHostOrUserServiceInterfaceImplimentation implements AddingAndDeletingHostOrUserServiceInterface {
+public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHostOrUserServiceInterface {
 	@Autowired
 	private HostRepository hRepo;
 	@Autowired
 	private UsersRepository uRepo;
 //	@Autowired
-//	private UserDetailsServiceClass userC;
-//	@Autowired
 //	private PasswordEncoder pass;
 	
 	
-
-//	::::::ADMIN SIDE::::::
 	
 	@Override
 	public Host addHost(@Valid Host host) throws ApplicationException {
@@ -52,16 +47,7 @@ public class AddingAndDeletingHostOrUserServiceInterfaceImplimentation implement
 		hRepo.save(host);
 		return host;
 	}
-	@Override
-	public Host deleteHost(Integer hostId) throws ApplicationException {
-		log.info("inside deleteHost method of Service");
-		Optional<Host> opt = hRepo.findById(hostId);
-		if(opt.isEmpty()) {
-			throw new ApplicationException("Host with these credentials is not valid...");
-		}
-		hRepo.delete(opt.get());
-		return opt.get();
-	}
+	
 	
 	
 	
@@ -85,33 +71,17 @@ public class AddingAndDeletingHostOrUserServiceInterfaceImplimentation implement
 		uRepo.save(user);
 		return user;
 	}
-	@Override
-	public Users deleteUser(Integer userId) throws ApplicationException {
-		log.info("inside deleteUser method of Service");
-		Optional<Users> opt = uRepo.findById(userId);
-		if(opt.isEmpty()) {
-			throw new ApplicationException("Host with these credentials is not valid...");
-		}
-		uRepo.delete(opt.get());
-		return opt.get();
-		
-	}
-	@Override
-	public List<Host> getAllHost() throws ApplicationException {
-		List<Host>hosts = hRepo.findAll();
-		if(hosts==null|| hosts.size()==0) {
-			throw new ApplicationException("Hosts Not Found...");
-		}
-		return hosts;
-	}
-	@Override
-	public List<Users> getAllUser() throws ApplicationException{
-		List<Users>users = uRepo.findAll();
-		if(users==null|| users.size()==0) {
-			throw new ApplicationException("Users Not Found...");
-		}
-		return users;
-	}
+
+
+
+
+
+	
+
+
+
+
+	
 
 	
 	
