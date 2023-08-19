@@ -47,4 +47,12 @@ public class Booking {
 	private Users user;
 	@OneToMany(mappedBy = "booking")
 	private List<Room>rooms;
+	@JsonIgnore
+	private boolean active=true;
+	public boolean getActive() {
+		return this.active;
+	}
+	public void setActive(boolean active) {
+		this.active=active;
+	}
 }
