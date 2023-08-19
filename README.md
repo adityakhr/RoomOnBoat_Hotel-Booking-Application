@@ -76,14 +76,13 @@ User Functionality.....
        1 -> Show properties (end points=>'http://localhost:8080/user/properties')<br>
 	2 -> Show room of Property (end point=>'http://localhost:8080/user/property/{propertyId}/get_rooms')<br>
 	3 -> See his boking (end point=>'http://localhost:8080/user/{userId}/get_your_booking')<br>
-	4 -> See a property's rooms (end point=>'http://localhost:8080/user/property/{propertyId}/get_rooms')<br>
-	5 -> Update email (end point=>'http://localhost:8080/user/{userId}/update_email')<br>
-	6 -> Update password(end point=>'http://localhost:8080/user/{userId}/update_password')<br>
-	7 -> Update name(end point=>'http://localhost:8080/user/{userId}/update_name')<br>
-	8 -> Delete account(end point=>'http://localhost:8080/user/{userId}/delete_account')<br>
-	9 -> Book a room(end point=>'http://localhost:8080/user/{userId}/book_room/{roomId}')<br>
- 	10-> Delete room from booking(end point=>'http://localhost:8080/user/{userId}/booking/{bookingId}/delete_booked_room/{roomId}')<br>
-        11-> Confirm booking(end point=>'http://localhost:8080/user/{userId}/confirm_booking/{bookingId}')<br>
+	4 -> Update email (end point=>'http://localhost:8080/user/{userId}/update_email')<br>
+	5 -> Update password(end point=>'http://localhost:8080/user/{userId}/update_password')<br>
+	6 -> Update name(end point=>'http://localhost:8080/user/{userId}/update_name')<br>
+	7 -> Delete account(end point=>'http://localhost:8080/user/{userId}/delete_account')<br>
+	8 -> Book a room(end point=>'http://localhost:8080/user/{userId}/book_room/{roomId}')<br>
+ 	9-> Delete room from booking(end point=>'http://localhost:8080/user/{userId}/booking/{bookingId}/delete_booked_room/{roomId}')<br>
+        10-> Confirm booking(end point=>'http://localhost:8080/user/{userId}/confirm_booking/{bookingId}')<br>
 <br>
 
 <br>
