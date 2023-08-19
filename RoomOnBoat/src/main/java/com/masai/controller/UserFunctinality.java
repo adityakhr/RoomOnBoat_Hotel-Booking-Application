@@ -76,7 +76,7 @@ public class UserFunctinality {
 		Room room =  ufi.bookRoom(userId,roomId);
 		return new ResponseEntity<>(room,HttpStatus.OK);
 	}
-	@PostMapping("/{userId}/booking/{bookingId}/delete_booked_room/{roomId}")
+	@DeleteMapping("/{userId}/booking/{bookingId}/delete_booked_room/{roomId}")
 	public ResponseEntity<Room> deleteBookedRoom(@PathVariable("userId") Integer userId,@PathVariable("bookingId") Integer bookingId,@PathVariable("roomId") Integer roomId) throws ApplicationException{
 		log.info("updating host from restController...");
 		Room room =  ufi.deleteBookedRoom(userId,bookingId,roomId);
