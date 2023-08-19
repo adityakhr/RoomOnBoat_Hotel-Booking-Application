@@ -13,6 +13,9 @@ Here in this project you can find some entity classes which are as follows..<br>
 4. Property<br>
 5. Room<br>
 <br>
+Database Name..<br>
+RoomOnBoat
+<br>
 As the names are indicating they are entity classes for generating the various tables and their relations, you can have a look and find the relations between them in below diagram.<br>
 
 <p align="center">
