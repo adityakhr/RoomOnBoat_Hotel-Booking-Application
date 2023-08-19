@@ -75,15 +75,15 @@ User Functionality.....
   <br>
        1 -> Show properties (end points=>'http://localhost:8080/user/properties')<br>
 	2 -> Show room of Property (end point=>'http://localhost:8080/user/property/{propertyId}/get_rooms')<br>
-	3 -> See his property (end point=>'http://localhost:8080/host/{hostId}/properties')<br>
-	4 -> See his property's rooms (end point=>'http://localhost:8080/host/{hostId}/property/{propertyId}/rooms')<br>
-	5 -> Update email (end point=>'http://localhost:8080/host/{hostId}/update_email')<br>
-	6 -> Update password(end point=>'http://localhost:8080/host/{hostId}/update_password')<br>
-	7 -> Update name(end point=>'http://localhost:8080/host/{hostId}/update_name')<br>
-	8 -> Delete account(end point=>'http://localhost:8080/host/{hostId}/delete_account')<br>
-	9 -> Update Booking Status(end point=>'http://localhost:8080/host/{hostId}/update_status/booking/{bookingId}')<br>
- 	10-> Delete room(end point=>'http://localhost:8080/host/{hostId}/property/{propertyId}/delete_room/{roomId})<br>
-        11-> Delete Property(end point=>'http://localhost:8080/host/{hostId}/delete_property/{propertyId}')<br>
+	3 -> See his boking (end point=>'http://localhost:8080/user/{userId}/get_your_booking')<br>
+	4 -> See a property's rooms (end point=>'http://localhost:8080/user/property/{propertyId}/get_rooms')<br>
+	5 -> Update email (end point=>'http://localhost:8080/user/{userId}/update_email')<br>
+	6 -> Update password(end point=>'http://localhost:8080/user/{userId}/update_password')<br>
+	7 -> Update name(end point=>'http://localhost:8080/user/{userId}/update_name')<br>
+	8 -> Delete account(end point=>'http://localhost:8080/user/{userId}/delete_account')<br>
+	9 -> Book a room(end point=>'http://localhost:8080/user/{userId}/book_room/{roomId}')<br>
+ 	10-> Delete room from booking(end point=>'http://localhost:8080/user/{userId}/booking/{bookingId}/delete_booked_room/{roomId}')<br>
+        11-> Confirm booking(end point=>'http://localhost:8080/user/{userId}/confirm_booking/{bookingId}')<br>
 <br>
 
 <br>
