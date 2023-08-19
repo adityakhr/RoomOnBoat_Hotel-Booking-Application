@@ -74,7 +74,7 @@ public class AdminFuctionality {
 		List<Room> rooms=afi.getAllRooms(page,count,order);
 		return new ResponseEntity<>(rooms,HttpStatus.ACCEPTED);
 	}
-	@DeleteMapping("/delete_host/{roomId}")
+	@DeleteMapping("/delete_room/{roomId}")
 	public ResponseEntity<Room> DeleteRoom(@PathVariable("roomId")Integer roomId) throws ApplicationException{
 		log.info("Deleting Host");
 		Room room=afi.deleteRoom(roomId);
