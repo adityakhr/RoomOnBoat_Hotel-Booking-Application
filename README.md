@@ -21,22 +21,22 @@ As the names are indicating they are entity classes for generating the various t
 </p>
 
 <br><br>
-I have give two sides in this applications...<br><br>
-Host Functionality.....
+I have give three sides in this applications...<br><br>
+Admin Functionality.....
   <br>
   <br>
   for using admin functionality you have to login as Admin.<br>
   Admin can do....
   <br>
-    1 -> Add Restaurant<br>
-	2 -> Delete Restaurant<br>
-	3 -> Add Food Item in Restaurant's food items<br>
-	4 -> Delete Food Item<br>
-	5 -> See Customer Details<br>
-	6 -> Delete Customer<br>
-	7 -> Add New Admin<br>
-	8 -> Delete Admin<br>
-	0 -> Log out<br>
+    1 -> Add admin Only from user or Host (end points=>'http://localhost:8080/host/add_admin/host/{hostId}' or 'http://localhost:8080/host/add_admin/host/{userId}')<br>
+	2 -> Delete user (end points=>'http://localhost:8080/host/delete_host/{userId}')<br>
+	3 -> Delete host (end points=>'http://localhost:8080/host/delete_host/{hostId}')<br>
+	4 -> Show users (end points=>'http://localhost:8080/host/get_users')<br>
+	5 -> Show hosts (end points=>'http://localhost:8080/host/get_hosts')<br>
+	6 -> Show Properties(end points=>'http://localhost:8080/host/get_properties')<br>
+	7 -> Show Rooms(end points=>'http://localhost:8080/host/get_rooms')<br>
+	8 -> Delete Property(end points=>'http://localhost:8080/host/delete_property/{propertyId}')<br>
+	0 -> Delete Room(end points=>'http://localhost:8080/host/delete_room/{roomId})<br>
 <br>
 <br>
 Customer Functionality.....
