@@ -31,7 +31,8 @@ I have give three sides in this applications...<br><br>
 Admin Functionality.....
   <br>
   <br>
-  For using admin functionality you have to login as Admin.<br>
+  
+  For using admin functionality you have to login as Admin( We can not signUp as Admin for getting added into application there should be an master admin who can add you as admin from user or host. ).<br>
   Admin can do....
   <br>
    1 -> Admin change user or host to Admin (end points=>'http://localhost:8080/admin/add_admin/host/{hostId}' or 'http://localhost:8080/admin/add_admin/user/{userId}')<br>
