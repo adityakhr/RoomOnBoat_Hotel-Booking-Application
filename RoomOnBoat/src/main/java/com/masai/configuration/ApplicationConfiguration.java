@@ -41,7 +41,7 @@ public class ApplicationConfiguration {
 		})
 		.authorizeHttpRequests(auth ->{
 			auth
-				.requestMatchers(HttpMethod.POST,"/add/users","/add/hosts","/host/logIn","/user/logIn","/admin/logIn","/logout").permitAll()
+				.requestMatchers(HttpMethod.POST,"/add/users","/add/hosts","/login/host","/login/user","/login/admin","/logout").permitAll()
 				.requestMatchers(HttpMethod.GET,"/host/{hostId}/property/{propertyId}/rooms","/host/{hostId}/properties").hasRole("HOST")
 				.requestMatchers(HttpMethod.POST,"/host/{hostId}/properties","/host/{hostId}/property/{propertyId}/rooms","/host/{hostId}/update_email","/host/{hostId}/update_password","/host/{hostId}/update_status/booking/{bookingId}","/host/{hostId}/update_name").hasRole("HOST")
 				.requestMatchers(HttpMethod.DELETE,"/host/{hostId}/delete_account","/host/{hostId}/property/{propertyId}/delete_room/{roomId}","/host/{hostId}/delete_property/{propertyId}").hasRole("HOST")
@@ -50,8 +50,7 @@ public class ApplicationConfiguration {
 				.requestMatchers(HttpMethod.DELETE,"/admin/delete_host/{hostId}","/admin/delete_user/{userId}","/admin/delete_room/{roomId}","/admin/delete_property/{propertyId}").hasRole("ADMIN")
 				.requestMatchers(HttpMethod.GET,"/user/get_properties","/user/property/{propertyId}/get_rooms","/user/{userId}/get_your_booking").hasRole("USER")
 				.requestMatchers(HttpMethod.POST,"/user/{userId}/update_email","/user/{userId}/update_password","/user/{userId}/update_name","/user/{userId}/book_room/{roomId}","/user/{userId}/confirm_booking/{bookingId}").hasRole("USER")
-				.requestMatchers(HttpMethod.DELETE,"/user/{userId}/booking/{bookingId}/delete_booked_room/{roomId}","/user/{userId}/delete_account").hasRole("USER")
-				.anyRequest().authenticated();
+				.requestMatchers(HttpMethod.DELETE,"/user/{userId}/booking/{bookingId}/delete_booked_room/{roomId}","/user/{userId}/delete_account").hasRole("USER");
 				})
 			.csrf(csrf -> csrf.disable())
 			.addFilterAfter(new JwtTokenGeneratorFilter(),BasicAuthenticationFilter.class)

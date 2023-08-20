@@ -1,7 +1,5 @@
 package com.masai.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,24 +38,22 @@ public class AddingAndDeletingHostOrUser {
 	
 		
 //	::::::LOGIN END-POINTS::::::
-	@PostMapping("user/logIn")
+	@PostMapping("/login/user")
 	public ResponseEntity<Users> logInUserDetails(Authentication auth) throws ApplicationException {
 		log.info("LogIn ad User in controllerPackage...");
 		Users user =asi.logInUserDetails(auth);
 		return new ResponseEntity<>(user,HttpStatus.ACCEPTED);
 	}
-	@PostMapping("/host/logIn")
+	@PostMapping("/login/host")
 	public ResponseEntity<Host> logInHostDetails(Authentication auth) throws ApplicationException {
 		log.info("LogIn ad Host in controllerPackage...");
 		Host host =asi.logInHostDetails(auth);
 		return new ResponseEntity<>(host,HttpStatus.ACCEPTED);
 	}
-	@PostMapping("/admin/logIn")
+	@PostMapping("/login/admin")
 	public ResponseEntity<Admin> logInAdminDetails(Authentication auth) throws ApplicationException {
 		log.info("LogIn ad Admin in controllerPackage...");
 		Admin admin =asi.logInAdminDetails(auth);
 		return new ResponseEntity<>(admin,HttpStatus.ACCEPTED);
 	}
-	
-	
 }
