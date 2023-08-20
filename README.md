@@ -73,7 +73,7 @@ User Functionality.....
   <br>
   User can do...
   <br>
-       1 -> Show properties (end points=>'http://localhost:8080/user/properties')<br>
+       1 -> Show properties (end points=>'http://localhost:8080/user/get_properties')<br>
 	2 -> Show room of Property (end point=>'http://localhost:8080/user/property/{propertyId}/get_rooms')<br>
 	3 -> See his boking (end point=>'http://localhost:8080/user/{userId}/get_your_booking')<br>
 	4 -> Update email (end point=>'http://localhost:8080/user/{userId}/update_email')<br>
