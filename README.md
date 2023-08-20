@@ -46,7 +46,7 @@ Admin Functionality.....
  	10-> Show admins(end point=>'http://localhost:8080/admin/get_admins)
 <br>
 <br>
-<h2 align="center">Host Functionality.....</h2>
+Host Functionality.....
 <br>
 <br>
   For using Host Functionality you have to login as Host.
@@ -66,7 +66,7 @@ Admin Functionality.....
         11-> Delete Property(end point=>' http://localhost:8080/host/{hostId}/delete_property/{propertyId} ')<br>
 <br>
 <br>
-<h2 align="center">User Functionality.....</h2>
+User Functionality.....
 <br>
 <br>
   For using User Functionality you have to login as User.
