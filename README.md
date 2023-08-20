@@ -85,8 +85,7 @@ User Functionality.....
         10-> Confirm booking(end point=>'http://localhost:8080/user/{userId}/confirm_booking/{bookingId}')<br>
 <br>
 <p align="center">
-	<h3>For all the getting request(Method="GET"), you can get it in pages and can order it(Default-> name/id). For pagination and sorting in Get method endpoints you have to add the thing which are as follows...</h3><br>
-	<br>
+	<h3>For all the getting request(Method="GET"), you can get it in pages and can order it(Default-> name/id). For pagination and sorting in Get method endpoints you have to add the thing which are as follows...</h3>
 	<h2 align="center"> ?page={yourPageNumber}&count={ourItemCount}&order={desc/asc}</h2>
 </p>
 
