@@ -6,10 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +20,6 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@CrossOrigin(origins = "*")
 @Slf4j
 public class AddingAndDeletingHostOrUser {
 	@Autowired
@@ -32,13 +27,13 @@ public class AddingAndDeletingHostOrUser {
 	
 	@PostMapping("/add/hosts")
 	public ResponseEntity<Host> addNewHost(@RequestBody @Valid Host host) throws ApplicationException{
-		log.info("Adding Host");
+		log.info("Adding new Host in controllerPackage...");
 		Host hostt=asi.addHost(host);
 		return new ResponseEntity<>(hostt,HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/add/users")
 	public ResponseEntity<Users> addNewUser(@RequestBody @Valid Users user) throws ApplicationException{
-		log.info("Adding User");
+		log.info("Adding new User in controllerPackage...");
 		Users userr=asi.addUser(user);
 		return new ResponseEntity<>(userr,HttpStatus.ACCEPTED);
 	}

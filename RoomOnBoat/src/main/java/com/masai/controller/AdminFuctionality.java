@@ -34,67 +34,67 @@ public class AdminFuctionality {
 	
 	@GetMapping("/get_hosts")
 	public ResponseEntity<List<Host>> getAllHost(@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
-		log.info("Getting Host");
+		log.info("Admin is Getting Hosts in cotroller");
 		List<Host> hosts=afi.getAllHost(page,count,order);
 		return new ResponseEntity<>(hosts,HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/get_users")
 	public ResponseEntity<List<Users>> getAllUser(@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
-		log.info("Getting User");
+		log.info("Admin is Getting Users in cotroller");
 		List<Users> users=afi.getAllUser(page,count,order);
 		return new ResponseEntity<>(users,HttpStatus.ACCEPTED);
 	}
 	@DeleteMapping("/delete_host/{hostId}")
 	public ResponseEntity<Host> DeleteHost(@PathVariable("hostId")Integer hostId) throws ApplicationException{
-		log.info("Deleting Host");
+		log.info("Admin is Deleting Host in cotroller");
 		Host host=afi.deleteHost(hostId);
 		return new ResponseEntity<>(host,HttpStatus.ACCEPTED);
 	}
 	@DeleteMapping("/delete_user/{userId}")
 	public ResponseEntity<Users> DeleteUser(@PathVariable("userId")Integer userId) throws ApplicationException{
-		log.info("Deleting User");
+		log.info("Admin is Deleting User in cotroller");
 		Users user=afi.deleteUser(userId);
 		return new ResponseEntity<>(user,HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/get_admins")
 	public ResponseEntity<List<Admin>> getAlladmin(@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order ) throws ApplicationException{
-		log.info("Getting User");
+		log.info("Admin is Getting Admins in cotroller");
 		List<Admin> admins=afi.getAlladmin(page,count,order);
 		return new ResponseEntity<>(admins,HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/get_properties")
 	public ResponseEntity<List<Property>> getAllProperties(@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
-		log.info("Getting Host");
+		log.info("Admin is Getting Properties in cotroller");
 		List<Property> properties=afi.getAllProperties(page,count,order);
 		return new ResponseEntity<>(properties,HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/get_rooms")
 	public ResponseEntity<List<Room>> getAllRooms(@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order ) throws ApplicationException{
-		log.info("Getting User");
+		log.info("Admin is Getting Rooms in cotroller");
 		List<Room> rooms=afi.getAllRooms(page,count,order);
 		return new ResponseEntity<>(rooms,HttpStatus.ACCEPTED);
 	}
-	@DeleteMapping("/delete_room/{roomId}")
+	@DeleteMapping("/delete_host/{roomId}")
 	public ResponseEntity<Room> DeleteRoom(@PathVariable("roomId")Integer roomId) throws ApplicationException{
-		log.info("Deleting Host");
+		log.info("Admin is Deleting Room in cotroller");
 		Room room=afi.deleteRoom(roomId);
 		return new ResponseEntity<>(room,HttpStatus.ACCEPTED);
 	}
 	@DeleteMapping("/delete_property/{propertyId}")
 	public ResponseEntity<Property> DeleteProperty(@PathVariable("propertyId")Integer propertyId) throws ApplicationException{
-		log.info("Deleting User");
+		log.info("Admin is Deleting Property in cotroller");
 		Property property=afi.deleteProperty(propertyId);
 		return new ResponseEntity<>(property,HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/add_admin/host/{hostId}")
 	public ResponseEntity<Admin> addHostAdmin(@PathVariable("hostId")Integer hostId) throws ApplicationException{
-		log.info("Deleting User");
+		log.info("Admin is changing Host to Admin in cotroller");
 		Admin admin=afi.addHostAdmin(hostId);
 		return new ResponseEntity<>(admin,HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/add_admin/user/{userId}")
 	public ResponseEntity<Admin> addUserAdmin(@PathVariable("userId")Integer userId) throws ApplicationException{
-		log.info("Deleting User");
+		log.info("Admin is changing User to Admin in cotroller");
 		Admin admin=afi.addUserAdmin(userId);
 		return new ResponseEntity<>(admin,HttpStatus.ACCEPTED);
 	}

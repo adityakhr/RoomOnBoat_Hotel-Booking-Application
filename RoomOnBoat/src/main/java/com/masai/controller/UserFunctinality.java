@@ -20,6 +20,7 @@ import com.masai.model.Property;
 import com.masai.model.Room;
 import com.masai.model.Users;
 import com.masai.service.UserFunctionalityInterfaceImplementation;
+import com.masai.update.BookingDetails;
 import com.masai.update.UpdateEmail;
 import com.masai.update.UpdateName;
 import com.masai.update.UpdatePassword;
@@ -36,61 +37,61 @@ public class UserFunctinality {
 	private UserFunctionalityInterfaceImplementation ufi;
 	@GetMapping("/get_properties")
 	public ResponseEntity<List<Property>> getAllProperties(@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
-		log.info("Getting Host");
+		log.info("User is getting all Property in Controller...");
 		List<Property> properties=ufi.getAllProperties(page,count,order);
 		return new ResponseEntity<>(properties,HttpStatus.ACCEPTED);
 	}
-	@GetMapping("property/{propertyId}/get_rooms")
-	public ResponseEntity<List<Room>> getRooms(@PathVariable("{propertyId}")Integer propertyId,@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
-		log.info("Getting Host");
+	@GetMapping("/property/{propertyId}/get_rooms")
+	public ResponseEntity<List<Room>> getRooms(@PathVariable("propertyId")Integer propertyId,@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
+		log.info("User is getting all Room in Controller...");
 		List<Room> rooms=ufi.getRooms(propertyId,page,count,order);
 		return new ResponseEntity<>(rooms,HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/{userId}/get_your_booking")
-	public ResponseEntity<List<Booking>> getBookings(@PathVariable("{userId}")Integer userId,@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
-		log.info("Getting Host");
+	public ResponseEntity<List<Booking>> getBookings(@PathVariable("userId")Integer userId,@RequestParam(defaultValue = "0" ,required = false) Integer page, @RequestParam(defaultValue = "10" ,required = false) Integer count, @RequestParam(defaultValue = "asc",required = false) String order  ) throws ApplicationException{
+		log.info("User is getting all Booking in Controller...");
 		List<Booking> bookings=ufi.getBookings(userId,page,count,order);
 		return new ResponseEntity<>(bookings,HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/{userId}/update_email")
 	public ResponseEntity<Users> updateEmail(@PathVariable("userId") Integer userId , @RequestBody @Valid UpdateEmail updatedEmail) throws ApplicationException{
-		log.info("updating host from restController...");
+		log.info("User is Updating Email in Controller...");
 		Users user =  ufi.updateEmail(userId, updatedEmail);
 		return new ResponseEntity<>(user,HttpStatus.OK);
 	}
 	@PostMapping("/{userId}/update_password")
 	public ResponseEntity<Users> updatePassword(@PathVariable("userId") Integer userId , @RequestBody @Valid UpdatePassword updatedPassword) throws ApplicationException{
-		log.info("updating host from restController...");
+		log.info("User is Updating Password in Controller...");
 		Users user =  ufi.updatePassword(userId, updatedPassword);
 		return new ResponseEntity<>(user,HttpStatus.OK);
 	}
 	@PostMapping("/{userId}/update_name")
 	public ResponseEntity<Users> updateName(@PathVariable("userId") Integer userId , @RequestBody @Valid UpdateName updatedName) throws ApplicationException{
-		log.info("updating host from restController...");
+		log.info("User is Updating Name in Controller...");
 		Users user =  ufi.updateName(userId, updatedName);
 		return new ResponseEntity<>(user,HttpStatus.OK);
 	}
 	@PostMapping("/{userId}/book_room/{roomId}")
-	public ResponseEntity<Room> bookRoom(@PathVariable("userId") Integer userId,@PathVariable("roomId") Integer roomId) throws ApplicationException{
-		log.info("updating host from restController...");
-		Room room =  ufi.bookRoom(userId,roomId);
+	public ResponseEntity<Room> bookRoom(@PathVariable("userId") Integer userId,@PathVariable("roomId") Integer roomId,@RequestBody @Valid BookingDetails bd ) throws ApplicationException{
+		log.info("User is Booking Room in Controller...");
+		Room room =  ufi.bookRoom(userId,roomId,bd);
 		return new ResponseEntity<>(room,HttpStatus.OK);
 	}
 	@DeleteMapping("/{userId}/booking/{bookingId}/delete_booked_room/{roomId}")
 	public ResponseEntity<Room> deleteBookedRoom(@PathVariable("userId") Integer userId,@PathVariable("bookingId") Integer bookingId,@PathVariable("roomId") Integer roomId) throws ApplicationException{
-		log.info("updating host from restController...");
+		log.info("User is Deleting Room from Booking in Controller...");
 		Room room =  ufi.deleteBookedRoom(userId,bookingId,roomId);
 		return new ResponseEntity<>(room,HttpStatus.OK);
 	}
 	@PostMapping("/{userId}/confirm_booking/{bookingId}")
 	public ResponseEntity<Booking> confirmBooking(@PathVariable("userId") Integer userId,@PathVariable("bookingId") Integer bookingId) throws ApplicationException{
-		log.info("updating host from restController...");
+		log.info("User is Confirming boooking in Controller...");
 		Booking booking =  ufi.confirmBooking(userId,bookingId);
 		return new ResponseEntity<>(booking,HttpStatus.OK);
 	}
 	@DeleteMapping("/{userId}/delete_account")
 	public ResponseEntity<Users> deleteYourAccount(@PathVariable("userId") Integer userId ) throws ApplicationException{
-		log.info("deleting host from restController...");
+		log.info("User is Deleting his Account in Controller...");
 		Users user =  ufi.deleteYourAccount(userId);
 		return new ResponseEntity<>(user,HttpStatus.OK);
 	}

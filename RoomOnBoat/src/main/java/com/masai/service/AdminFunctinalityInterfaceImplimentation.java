@@ -42,7 +42,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	
 	@Override
 	public Users deleteUser(Integer userId) throws ApplicationException {
-		log.info("inside deleteUser method of Service");
+		log.info("Admin Deleting User in Service");
 		Optional<Users> opt = uRepo.findById(userId);
 		if(opt.isEmpty()) {
 			throw new ApplicationException("Host with these credentials is not valid...");
@@ -53,7 +53,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public Host deleteHost(Integer hostId) throws ApplicationException {
-		log.info("inside deleteHost method of Service");
+		log.info("Admin Deleting Host in Service");
 		Optional<Host> opt = hRepo.findById(hostId);
 		if(opt.isEmpty()) {
 			throw new ApplicationException("Host with these credentials is not valid...");
@@ -63,6 +63,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public List<Host> getAllHost(int page, int count, String order) throws ApplicationException {
+		log.info("Admin is Getting Hosts in Service");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -80,6 +81,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public List<Admin> getAlladmin(Integer page, Integer count, String order) throws ApplicationException {
+		log.info("Admin is Getting Admin in Service");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -97,6 +99,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public List<Users> getAllUser(int page, int count, String order) throws ApplicationException{
+		log.info("Admin is Getting Users in Service");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -113,7 +116,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public Property deleteProperty(Integer propertyId) throws ApplicationException {
-		log.info("inside deleteHost method of Service");
+		log.info("Admin is Deleting Property in Service");
 		Optional<Property> opt = pRepo.findById(propertyId);
 		if(opt.isEmpty()) {
 			throw new ApplicationException("Property Not Found...");
@@ -123,7 +126,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public Room deleteRoom(Integer roomId) throws ApplicationException {
-		log.info("inside deleteHost method of Service");
+		log.info("Admin is Deleting Room in Service");
 		Optional<Room> opt = rRepo.findById(roomId);
 		if(opt.isEmpty()) {
 			throw new ApplicationException("Room Not Found...");
@@ -133,6 +136,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public List<Property> getAllProperties(int page, int count, String order) throws ApplicationException {
+		log.info("Admin is Getting All Properties in Service");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -149,6 +153,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public List<Room> getAllRooms(int page, int count, String order) throws ApplicationException{
+		log.info("Admin is Getting All Rooms in Service");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -165,7 +170,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public Admin addHostAdmin(Integer hostId) throws ApplicationException {
-		log.info("inside addHost method of Service");
+		log.info("Admin is Adding Host to Admin in Service...");
 		Optional<Host> host=hRepo.findById(hostId);
 		if(host.isEmpty()) {
 			throw new ApplicationException("No Host Found...");
@@ -185,6 +190,7 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	}
 	@Override
 	public Admin addUserAdmin(Integer userId) throws ApplicationException {
+		log.info("Admin is Adding User to Admin in Service...");
 		Optional<Users> user=uRepo.findById(userId);
 		if(user.isEmpty()) {
 			throw new ApplicationException("No User Found...");

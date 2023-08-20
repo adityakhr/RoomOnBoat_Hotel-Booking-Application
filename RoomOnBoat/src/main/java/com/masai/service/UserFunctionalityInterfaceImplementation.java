@@ -20,10 +20,14 @@ import com.masai.repository.BookingRepository;
 import com.masai.repository.PropertyRepository;
 import com.masai.repository.RoomRepository;
 import com.masai.repository.UsersRepository;
+import com.masai.update.BookingDetails;
 import com.masai.update.UpdateEmail;
 import com.masai.update.UpdateName;
 import com.masai.update.UpdatePassword;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class UserFunctionalityInterfaceImplementation implements UserFunctionalityInterface {
 	@Autowired
 	private UsersRepository uRepo;
@@ -37,6 +41,7 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 //	private PasswordEncoder pass;
 	@Override
 	public List<Property> getAllProperties(int page, int count, String order) throws ApplicationException {
+		log.info("User is Getting all Properties in Service....");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -53,6 +58,7 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	}
 	@Override
 	public List<Room> getRooms(Integer propertyId, Integer page, Integer count, String order) throws ApplicationException {
+		log.info("User is Getting Property's all Room in Service....");
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -68,11 +74,16 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 		return rooms;
 	}
 	public List<Booking> getBookings(Integer userId, Integer page, Integer count, String order) throws ApplicationException{
+		log.info("User is Getting his Booking in Service....");
+		Optional<Users> opt1 = uRepo.findById(userId);
+		if(opt1.isEmpty()) {
+			throw new ApplicationException("User Not Found...");
+		}
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
-			sort =Sort.by("name").descending();
+			sort =Sort.by("bookingId").descending();
 		}else {
-			sort =Sort.by("name").ascending();
+			sort =Sort.by("bookingId").ascending();
 		}
 		Pageable pageNumber = PageRequest.of(page, count,sort);
 		Page<Booking>bookingOfPage = bRepo.findBooking(userId,pageNumber);
@@ -84,6 +95,7 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	}
 	@Override
 	public Users updateEmail(Integer userId, UpdateEmail updatedEmail) throws ApplicationException {
+		log.info("User is Updating Email in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
@@ -94,6 +106,7 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	}
 	@Override
 	public Users updatePassword(Integer userId, UpdatePassword updatedPassword) throws ApplicationException {
+		log.info("User is Updating Password in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
@@ -105,6 +118,7 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	}
 	@Override
 	public Users updateName(Integer userId, UpdateName updatedName) throws ApplicationException {
+		log.info("User is Updating Name in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
@@ -115,16 +129,24 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	}
 	@Override
 	public Users deleteYourAccount(Integer userId) throws ApplicationException {
+		log.info("User is Deleting his Account in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
+		}
+		List<Booking>bookings=opt1.get().getBookings();
+		if(bookings!=null&&bookings.size()!=0) {
+			for(Booking b:bookings) {
+				b.setUser(null);
+			}
 		}
 		Users user = opt1.get();
 		uRepo.delete(opt1.get());
 		return user;
 	}
 	@Override
-	public Room bookRoom(Integer userId,Integer roomId) throws ApplicationException {
+	public Room bookRoom(Integer userId,Integer roomId, BookingDetails bd) throws ApplicationException {
+		log.info("User is Booking Room in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
@@ -139,8 +161,10 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 		Booking booking=bRepo.findbooking(userId);
 		if(booking==null) {
 			booking=new Booking();
-			
+			booking.setDurationInDays(bd.getDurationInDays());
+			booking.setNumberOfGuest(bd.getNumberOfGuest());
 		}
+		
 		List<Room>rooms=booking.getRooms();
 		if(rooms==null|| rooms.size()==0) {
 			rooms=new ArrayList<>();
@@ -160,10 +184,13 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 		}
 		userBooking.add(booking);
 		bRepo.save(booking);
+		uRepo.save(opt1.get());
+		rRepo.save(opt.get());
 		return opt.get();
 	}
 	@Override
 	public Room deleteBookedRoom(Integer userId, Integer bookingId, Integer roomId) throws ApplicationException {
+		log.info("User is Deleting Room from Booking in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
@@ -185,12 +212,14 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 		Booking booking=bRepo.findbooking(userId);
 		booking.getRooms().remove(opt.get());
 		opt.get().setStatus("available");
+		opt.get().setBooking(null);
 		rRepo.save(opt.get());
 		bRepo.save(booking);
 		return opt.get();
 	}
 	@Override
 	public Booking confirmBooking(Integer userId, Integer bookingId) throws ApplicationException {
+		log.info("User is Confirming Booking in Service...");
 		Optional<Users> opt1 = uRepo.findById(userId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");

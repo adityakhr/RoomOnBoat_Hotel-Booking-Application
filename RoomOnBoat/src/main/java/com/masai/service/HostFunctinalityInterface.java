@@ -16,10 +16,6 @@ public interface HostFunctinalityInterface {
 
 	public Room addRoomToProperty(Room room, Integer propertyId, Integer hostId) throws ApplicationException;
 
-	public List<Room> fetchAllRooms(Integer propertyId,Integer hostId) throws ApplicationException;
-
-	public List<Property> fetchAllProperties(Integer hostId) throws ApplicationException;
-
 	public Host deleteYourAccount(Integer hostId) throws ApplicationException;
 
 	public Host updateEmail(Integer hostId, UpdateEmail updatedEmail) throws ApplicationException;
@@ -33,6 +29,12 @@ public interface HostFunctinalityInterface {
 	public Property deleteProperty(Integer hostId, Integer propertyId) throws ApplicationException;
 
 	public Booking updateBookingStatus(Integer hostId, Integer bookingId) throws ApplicationException;
+
+	List<Room> fetchAllRooms(Integer propertyId, Integer hostId, Integer page, Integer count, String order)
+			throws ApplicationException;
+
+	List<Property> fetchAllProperties(Integer hostId, Integer page, Integer count, String order)
+			throws ApplicationException;
 
 	
 	

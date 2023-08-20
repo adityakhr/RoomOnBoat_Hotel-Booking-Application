@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
@@ -36,7 +40,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	
 	@Override
 	public Property addNewProperty(Property property, Integer hostId) throws ApplicationException {
-		log.info("inside addProperty method of Host Functionality...");
+		log.info("Host is Adding Property in Service...");
 		Optional<Property> opt = pRepo.findById(property.getPropertyId());
 		Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
@@ -61,7 +65,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	
 	@Override
 	public Room addRoomToProperty(Room room, Integer propertyId, Integer hostId) throws ApplicationException {
-		log.info("inside addRoom method of Host Functionality...");
+		log.info("Host is Adding Property's new Room in Service...");
 		Optional<Host> optt = hRepo.findById(hostId);
 		if(optt.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
@@ -94,7 +98,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	
 	
 	@Override
-	public List<Room> fetchAllRooms(Integer propertyId, Integer hostId) throws ApplicationException {
+	public List<Room> fetchAllRooms(Integer propertyId, Integer hostId, Integer page, Integer count, String order) throws ApplicationException {
+		log.info("Host is Getting All Rooms in Service...");
 		Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
@@ -107,19 +112,36 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 		if(property.get().getHost().getHostId()!=hostId) {
 			throw new ApplicationException("Property Doesn't Belong To This Host");
 		}
-		List<Room>rooms = property.get().getRooms();
+		Sort sort=null;
+		if(order.toLowerCase().equals("desc")) {
+			sort =Sort.by("name").descending();
+		}else {
+			sort =Sort.by("name").ascending();
+		}
+		Pageable pageNumber = PageRequest.of(page, count,sort);
+		Page<Room>roomsOfPage = rRepo.findRoomForHost(propertyId,pageNumber);
+		List<Room>rooms = roomsOfPage.getContent();
 		if(rooms==null || rooms.isEmpty()) {
 			throw new ApplicationException("Property Does Not Have Rooms...");
 		}
 		return rooms;
 	}
     @Override
-	public List<Property> fetchAllProperties(Integer hostId) throws ApplicationException {
+	public List<Property> fetchAllProperties(Integer hostId, Integer page, Integer count, String order) throws ApplicationException {
+    	log.info("Host is Getting All Properties in Service...");
     	Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
-		List<Property> properties = opt1.get().getProperty();
+		Sort sort=null;
+		if(order.toLowerCase().equals("desc")) {
+			sort =Sort.by("name").descending();
+		}else {
+			sort =Sort.by("name").ascending();
+		}
+		Pageable pageNumber = PageRequest.of(page, count,sort);
+		Page<Property>propertyOfPage = pRepo.findPropertyForHost(hostId,pageNumber);
+		List<Property> properties = propertyOfPage.getContent();
 		if(properties==null || properties.isEmpty()) {
 			throw new ApplicationException("Property Not Found...");
 		}
@@ -127,7 +149,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
     @Override
 	public Host deleteYourAccount(Integer hostId) throws ApplicationException {
-		Optional<Host> opt1 = hRepo.findById(hostId);
+    	log.info("Host is Deleting his account in Service...");
+    	Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
@@ -137,7 +160,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
     @Override
 	public Host updateEmail(Integer hostId, UpdateEmail updatedEmail) throws ApplicationException {
-		Optional<Host> opt1 = hRepo.findById(hostId);
+    	log.info("Host is Updating Email in Service...");
+    	Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
@@ -147,7 +171,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
     @Override
 	public Host updatePassword(Integer hostId, UpdatePassword updatedPassword) throws ApplicationException {
-		Optional<Host> opt1 = hRepo.findById(hostId);
+    	log.info("Host is Updating Password in Service...");
+    	Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
@@ -158,7 +183,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
     @Override
 	public Host updateName(Integer hostId, UpdateName updatedName) throws ApplicationException {
-		Optional<Host> opt1 = hRepo.findById(hostId);
+    	log.info("Host is Updating Name in Service...");
+    	Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
@@ -168,7 +194,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
     @Override
 	public Room deleteRoom(Integer hostId,Integer propertyId,Integer roomId) throws ApplicationException {
-		Optional<Room> opt = rRepo.findById(roomId);
+    	log.info("Host is Deleting Property's Room in Service...");
+    	Optional<Room> opt = rRepo.findById(roomId);
 		if(opt.isEmpty()) {
 			throw new ApplicationException("Room not Found...");
 		}
@@ -192,6 +219,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
 	@Override
 	public Property deleteProperty(Integer hostId,Integer propertyId) throws ApplicationException {
+		log.info("Host is Deleting Property in Service...");
 		Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
@@ -209,6 +237,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	}
 	@Override
 	public Booking updateBookingStatus(Integer hostId, Integer bookingId) throws ApplicationException {
+		log.info("Host is Updating Room Status in Service...");
 		Optional<Host> opt1 = hRepo.findById(hostId);
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
@@ -223,6 +252,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 		}
 		for(Room room : rooms) {
 			room.setStatus("Available");
+			room.setBooking(null);
 		}
 		booking.get().setRooms(rooms);
 		bRepo.save(booking.get());

@@ -31,7 +31,7 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 	
 	@Override
 	public Host addHost(@Valid Host host) throws ApplicationException {
-		log.info("inside addHost method of Service");
+		log.info("Adding new Host in Service");
 		Optional<Host> opt = hRepo.findById(host.getHostId());
 		if(opt.isPresent()) {
 			throw new ApplicationException("Already Exists with these credentials...");
@@ -55,7 +55,7 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 	
 	@Override
 	public Users addUser(Users user) throws ApplicationException{
-		log.info("inside addUser method of Service");
+		log.info("Adding new User in Service");
 		Optional<Users> opt = uRepo.findById(user.getUserId());
 		if(opt.isPresent()) {
 			throw new ApplicationException("Already Exists with these credentials...");

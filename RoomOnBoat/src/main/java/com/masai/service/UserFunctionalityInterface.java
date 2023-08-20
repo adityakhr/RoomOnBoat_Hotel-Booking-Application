@@ -7,6 +7,7 @@ import com.masai.model.Booking;
 import com.masai.model.Property;
 import com.masai.model.Room;
 import com.masai.model.Users;
+import com.masai.update.BookingDetails;
 import com.masai.update.UpdateEmail;
 import com.masai.update.UpdateName;
 import com.masai.update.UpdatePassword;
@@ -25,10 +26,10 @@ public interface UserFunctionalityInterface {
 
 	Users deleteYourAccount(Integer userId) throws ApplicationException;
 
-	Room bookRoom(Integer userId, Integer roomId) throws ApplicationException;
-
 	Room deleteBookedRoom(Integer userId, Integer bookingId, Integer roomId) throws ApplicationException;
 
 	Booking confirmBooking(Integer userId, Integer bookingId) throws ApplicationException;
+
+	Room bookRoom(Integer userId, Integer roomId, BookingDetails bd) throws ApplicationException;
 
 }
