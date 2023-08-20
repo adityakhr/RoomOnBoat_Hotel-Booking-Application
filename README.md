@@ -28,7 +28,7 @@ As the names are indicating they are entity classes for generating the various t
 
 <br><br>
 I have give three sides in this applications...<br><br>
-<h3 align="center">Admin Functionality.....</h3>
+<p align="center"><h3>Admin Functionality.....</h3></p>
   <br>
   <br>
   For using admin functionality you have to login as Admin.<br>
