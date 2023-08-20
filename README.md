@@ -34,7 +34,8 @@ Admin Functionality.....
   For using admin functionality you have to login as Admin.<br>
   Admin can do....
   <br>
-    1 -> Add admin Only from user or Host (end points=>'http://localhost:8080/admin/add_admin/host/{hostId}' or 'http://localhost:8080/admin/add_admin/host/{userId}')<br>
+  <p>
+	     1 -> Add admin Only from user or Host (end points=>'http://localhost:8080/admin/add_admin/host/{hostId}' or 'http://localhost:8080/admin/add_admin/host/{userId}')<br>
 	2 -> Delete user (end point=>'http://localhost:8080/admin/delete_host/{userId}')<br>
 	3 -> Delete host (end point=>'http://localhost:8080/admin/delete_host/{hostId}')<br>
 	4 -> Show users (end point=>'http://localhost:8080/admin/get_users')<br>
@@ -44,6 +45,7 @@ Admin Functionality.....
 	8 -> Delete Property(end point=>'http://localhost:8080/admin/delete_property/{propertyId}')<br>
 	9 -> Delete Room(end point=>'http://localhost:8080/admin/delete_room/{roomId})<br>
  	10-> Show admins(end point=>'http://localhost:8080/admin/get_admins)
+  </p>
 <br>
 <br>
 <h2 align="center">Host Functionality.....</h2>
