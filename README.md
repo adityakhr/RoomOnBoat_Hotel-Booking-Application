@@ -85,7 +85,7 @@ I have give three sides in this applications...<br><br>
         10-> Confirm booking(end point=>'http://localhost:8080/user/{userId}/confirm_booking/{bookingId}')<br>
 <br>
 <p align="center">
-	<h2>For all the getting request(Method="GET"), you can get it in pages and can order it(Default-> name/id). For pagination and sorting in Get method endpoints you have to add the thing which are as follows...</h2>
+	<h3>For all the getting request(Method="GET"), you can get it in pages and can order it(Default-> name/id). For pagination and sorting in Get method endpoints you have to add the thing which are as follows...</h3>
 	<h4 align="center"> ?page={yourPageNumber}&count={ourItemCount}&order={desc/asc}</h4>
 </p>
 If you have Java 17 installed in your machine you can run this application in you machine for that here is the jar file below...<br>
