@@ -28,7 +28,7 @@ As the names are indicating they are entity classes for generating the various t
 
 <br><br>
 I have give three sides in this applications...<br><br>
-Admin Functionality.....
+<h2 align="center">Admin Functionality.....</h2>
   <br>
   <br>
   For using admin functionality you have to login as Admin.<br>
@@ -46,7 +46,7 @@ Admin Functionality.....
  	10-> Show admins(end point=>'http://localhost:8080/admin/get_admins)
 <br>
 <br>
-Host Functionality.....
+<h2 align="center">Host Functionality.....</h2>
 <br>
 <br>
   For using Host Functionality you have to login as Host.
@@ -66,7 +66,7 @@ Host Functionality.....
         11-> Delete Property(end point=>'http://localhost:8080/host/{hostId}/delete_property/{propertyId}')<br>
 <br>
 <br>
-User Functionality.....
+<h2 align="center">User Functionality.....</h2>
 <br>
 <br>
   For using User Functionality you have to login as User.
