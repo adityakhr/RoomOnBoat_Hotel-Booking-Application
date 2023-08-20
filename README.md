@@ -35,7 +35,7 @@ Admin Functionality.....
   Admin can do....
   <br>
    1 -> Admin change user or host to Admin (end points=>'http://localhost:8080/admin/add_admin/host/{hostId}' or 'http://localhost:8080/admin/add_admin/user/{userId}')<br>
-	2 -> Delete user (end point=>'http://localhost:8080/admin/delete_host/{userId}')<br>
+	2 -> Delete user (end point=>'http://localhost:8080/admin/delete_user/{userId}')<br>
 	3 -> Delete host (end point=>'http://localhost:8080/admin/delete_host/{hostId}')<br>
 	4 -> Show users (end point=>'http://localhost:8080/admin/get_users')<br>
 	5 -> Show hosts (end point=>'http://localhost:8080/admin/get_hosts')<br>
