@@ -90,10 +90,8 @@ User Functionality.....
 </p>
 <br>
 If you have Java 17 installed in your machine you can run this application in you machine for that here is the jar file below...
-<P align="center">
-	Get the .jar file <a href="Logo/">here</a>
-</P>
-For running these given endpoints you can visit...<a href="http://localhost:8080/swagger-ui.html">here</a> after running .jar file or code.<br>
+Get the .jar file <a href="Logo/">here</a>
+For running these given endpoints you can visit <a href="http://localhost:8080/swagger-ui.html">here</a> after running .jar file or code.<br>
 <br>
 These were the some functionality of my application.
 <br>
