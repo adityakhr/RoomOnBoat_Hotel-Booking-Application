@@ -54,7 +54,7 @@ Host Functionality.....
   Host can do...
   <br>
        1 -> Add property in his profile (end points=>' http://localhost:8080/host/{hostId}/properties ')<br>
-	2 -> Add room to his Property (end point=>' http://localhost:8080/host/{userId}/property/{propertyId}/rooms ')<br>
+	2 -> Add room to his Property (end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/rooms ')<br>
 	3 -> See his property (end point=>' http://localhost:8080/host/{hostId}/properties ')<br>
 	4 -> See his property's rooms (end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/rooms ')<br>
 	5 -> Update email (end point=>' http://localhost:8080/host/{hostId}/update_email ')<br>
