@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
@@ -37,8 +38,8 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	private PropertyRepository pRepo;
 	@Autowired
 	private BookingRepository bRepo;
-//	@Autowired
-//	private PasswordEncoder pass;
+	@Autowired
+	private PasswordEncoder pass;
 	@Override
 	public List<Property> getAllProperties(int page, int count, String order) throws ApplicationException {
 		log.info("User is Getting all Properties in Service....");
@@ -111,8 +112,8 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("User Not Found...");
 		}
-//		opt1.get().setPassword(pass.encode(updatedPassword.getPassword()));
-		opt1.get().setPassword(updatedPassword.getPassword());
+		opt1.get().setPassword(pass.encode(updatedPassword.getPassword()));
+//		opt1.get().setPassword(updatedPassword.getPassword());
 		uRepo.save(opt1.get());
 		return opt1.get();
 	}

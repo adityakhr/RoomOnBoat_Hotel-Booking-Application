@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
@@ -35,8 +36,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	private RoomRepository rRepo;
 	@Autowired
 	private BookingRepository bRepo;
-//	@Autowired
-//	private PasswordEncoder pass;
+	@Autowired
+	private PasswordEncoder pass;
 	
 	@Override
 	public Property addNewProperty(Property property, Integer hostId) throws ApplicationException {
@@ -176,8 +177,8 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
-//		opt1.get().setEmail(pass.encode(updatedPassword.getPassword()));
-		opt1.get().setPassword(updatedPassword.getPassword());
+		opt1.get().setEmail(pass.encode(updatedPassword.getPassword()));
+//		opt1.get().setPassword(updatedPassword.getPassword());
 		hRepo.save(opt1.get());
 		return opt1.get();
 	}

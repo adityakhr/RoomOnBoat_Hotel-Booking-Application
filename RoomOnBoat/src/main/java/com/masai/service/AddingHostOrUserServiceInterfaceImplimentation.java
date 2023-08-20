@@ -3,11 +3,14 @@ package com.masai.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.core.Authentication;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
+import com.masai.model.Admin;
 import com.masai.model.Host;
 import com.masai.model.Users;
 import com.masai.repository.HostRepository;
@@ -24,10 +27,10 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 	private HostRepository hRepo;
 	@Autowired
 	private UsersRepository uRepo;
-//	@Autowired
-//	private PasswordEncoder pass;
-	
-	
+	@Autowired
+	private UserDetailsServiceClass uds;
+	@Autowired
+	private PasswordEncoder pass;
 	
 	@Override
 	public Host addHost(@Valid Host host) throws ApplicationException {
@@ -43,16 +46,10 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 		if(opt1.isPresent()) {
 			throw new ApplicationException("Email Already Exists...");
 		}
-//		host.setPassword(pass.encode(host.getPassword()));
+		host.setPassword(pass.encode(host.getPassword()));
 		hRepo.save(host);
 		return host;
 	}
-	
-	
-	
-	
-//	::::::USER SIDE::::::
-	
 	@Override
 	public Users addUser(Users user) throws ApplicationException{
 		log.info("Adding new User in Service");
@@ -67,48 +64,38 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 		if(opt1.isPresent()) {
 			throw new ApplicationException("Email Already Exists...");
 		}
-//		user.setPassword(pass.encode(user.getPassword()));
+		user.setPassword(pass.encode(user.getPassword()));
 		uRepo.save(user);
 		return user;
 	}
-
-
-
-
-
 	
-
-
-
-
-	
-
-	
-	
-	
-	
-	
-	
-//	@Override
-//	public Users logInUserDetails(Authentication auth) throws ApplicationException {
-//		if(auth==null) {
-//			throw new ApplicationException("No User Found with these Credentials");
-//		} 
-//		Users user = (Users) userC.loadUserByUsername(auth.getName());
-//		UserId currUser = new UserId();
-//		currUser.setCurrUserId(user.getUserId());
-//		return user;
-//	}
-//	@Override
-//	public Host logInHostDetails(Authentication auth) throws ApplicationException {
-//		if(auth==null) {
-//			throw new ApplicationException("No Host Found with these Credentials");
-//		}
-//		Host host = (Host) userC.loadHostByUsername(auth.getName());
-//		HostId currHost = new HostId();
-//		currHost.setCurrHostId(host.getHostId());
-//		return host;
-//	}
+	@Override
+	public Users logInUserDetails(Authentication auth) throws ApplicationException {
+		log.info("Checking for User in Service");
+		if(auth==null) {
+			throw new ApplicationException("No User Found with these Credentials");
+		} 
+		Users user = (Users) uds.loadUserByUsername(auth.getName()+":user");
+		return user;
+	}
+	@Override
+	public Host logInHostDetails(Authentication auth) throws ApplicationException {
+		log.info("Checking for Host in Service");
+		if(auth==null) {
+			throw new ApplicationException("No Host Found with these Credentials");
+		}
+		Host host = (Host) uds.loadUserByUsername(auth.getName()+":host");
+		return host;
+	}
+	@Override
+	public Admin logInAdminDetails(Authentication auth) throws ApplicationException {
+		log.info("Checking for Admin in Service");
+		if(auth==null) {
+			throw new ApplicationException("No Admin Found with these Credentials");
+		}
+		Admin admin = (Admin) uds.loadUserByUsername(auth.getName()+":admin");
+		return admin;
+	}
 	
 	
 }

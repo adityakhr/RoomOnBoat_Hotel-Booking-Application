@@ -1,10 +1,10 @@
 package com.masai.service;
 
 
-//import org.springframework.security.core.Authentication;
+import org.springframework.security.core.Authentication;
 
-//import org.springframework.security.core.Authentication;
 import com.masai.exception.ApplicationException;
+import com.masai.model.Admin;
 import com.masai.model.Host;
 import com.masai.model.Users;
 
@@ -14,8 +14,10 @@ public interface AddingHostOrUserServiceInterface {
 
 	public Users addUser(Users user) throws ApplicationException;
 
-//	Users logInUserDetails(Authentication auth) throws ApplicationException;
-//
-//	Host logInHostDetails(Authentication auth) throws ApplicationException;
+	Users logInUserDetails(Authentication auth) throws ApplicationException;
+
+	Host logInHostDetails(Authentication auth) throws ApplicationException;
+	
+	Admin logInAdminDetails(Authentication auth) throws ApplicationException;
 
 }

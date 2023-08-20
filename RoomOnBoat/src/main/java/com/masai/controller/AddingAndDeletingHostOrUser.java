@@ -5,13 +5,13 @@ package com.masai.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.core.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.ApplicationException;
+import com.masai.model.Admin;
 import com.masai.model.Host;
 import com.masai.model.Users;
 import com.masai.service.AddingHostOrUserServiceInterfaceImplimentation;
@@ -40,23 +40,24 @@ public class AddingAndDeletingHostOrUser {
 	
 		
 //	::::::LOGIN END-POINTS::::::
-//	@PostMapping("/logIn")
-//	public ResponseEntity<Users> logInUserDetails(Authentication auth) throws ApplicationException {
-//		
-//		Users user =asi.logInUserDetails(auth);
-//		
-//		return new ResponseEntity<>(user,HttpStatus.ACCEPTED);
-//		
-//	}
-//	@PostMapping("/host/logIn")
-//	public ResponseEntity<Host> logInHostDetails(Authentication auth) throws ApplicationException {
-//		
-//		Host host =asi.logInHostDetails(auth);
-//		
-//		return new ResponseEntity<>(host,HttpStatus.ACCEPTED);
-//		
-//	}
-	
+	@PostMapping("user/logIn")
+	public ResponseEntity<Users> logInUserDetails(Authentication auth) throws ApplicationException {
+		log.info("LogIn ad User in controllerPackage...");
+		Users user =asi.logInUserDetails(auth);
+		return new ResponseEntity<>(user,HttpStatus.ACCEPTED);
+	}
+	@PostMapping("/host/logIn")
+	public ResponseEntity<Host> logInHostDetails(Authentication auth) throws ApplicationException {
+		log.info("LogIn ad Host in controllerPackage...");
+		Host host =asi.logInHostDetails(auth);
+		return new ResponseEntity<>(host,HttpStatus.ACCEPTED);
+	}
+	@PostMapping("/admin/logIn")
+	public ResponseEntity<Admin> logInAdminDetails(Authentication auth) throws ApplicationException {
+		log.info("LogIn ad Admin in controllerPackage...");
+		Admin admin =asi.logInAdminDetails(auth);
+		return new ResponseEntity<>(admin,HttpStatus.ACCEPTED);
+	}
 	
 	
 }

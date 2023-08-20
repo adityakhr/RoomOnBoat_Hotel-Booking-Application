@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
@@ -37,8 +38,8 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	private PropertyRepository pRepo;
 	@Autowired
 	private AdminRepository aRepo;
-//	@Autowired
-//	private PasswordEncoder pass;
+	@Autowired
+	private PasswordEncoder pass;
 	
 	@Override
 	public Users deleteUser(Integer userId) throws ApplicationException {
@@ -182,8 +183,8 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 		Admin ad = new Admin();
 		ad.setEmail(host.get().getEmail());
 		ad.setName(host.get().getName());
-//		ad.setPassword(pass.encode(host.getPassword()));
-		ad.setPassword(host.get().getPassword());
+		ad.setPassword(pass.encode(host.get().getPassword()));
+//		ad.setPassword(host.get().getPassword());
 		aRepo.save(ad);
 		hRepo.delete(host.get());
 		return ad;
@@ -202,11 +203,12 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 		Admin ad = new Admin();
 		ad.setEmail(user.get().getEmail());
 		ad.setName(user.get().getName());
-//		ad.setPassword(pass.encode(user.getPassword()));
-		ad.setPassword(user.get().getPassword());
+		ad.setPassword(pass.encode(user.get().getPassword()));
+//		ad.setPassword(user.get().getPassword());
 		aRepo.save(ad);
 		uRepo.delete(user.get());
 		return ad;
 	}
+	
 	
 }
