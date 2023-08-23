@@ -58,13 +58,12 @@ Host Functionality.....
 	2 -> Add room to his Property (end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/rooms ')<br>
 	3 -> See his property (end point=>' http://localhost:8080/host/{hostId}/properties ')<br>
 	4 -> See his property's rooms (end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/rooms ')<br>
-	5 -> Update email (end point=>' http://localhost:8080/host/{hostId}/update_email ')<br>
-	6 -> Update password(end point=>' http://localhost:8080/host/{hostId}/update_password ')<br>
-	7 -> Update name(end point=>' http://localhost:8080/host/{hostId}/update_name ')<br>
-	8 -> Delete account(end point=>' http://localhost:8080/host/{hostId}/delete_account ')<br>
-	9 -> Update Booking Status(end point=>' http://localhost:8080/host/{hostId}/update_status/booking/{bookingId} ')<br>
- 	10-> Delete room(end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/delete_room/{roomId} ')<br>
-        11-> Delete Property(end point=>' http://localhost:8080/host/{hostId}/delete_property/{propertyId} ')<br>
+	5 -> Update password(end point=>' http://localhost:8080/host/{hostId}/update_password ')<br>
+	6 -> Update name(end point=>' http://localhost:8080/host/{hostId}/update_name ')<br>
+	7 -> Delete account(end point=>' http://localhost:8080/host/{hostId}/delete_account ')<br>
+	8 -> Update Booking Status(end point=>' http://localhost:8080/host/{hostId}/update_status/booking/{bookingId} ')<br>
+ 	9-> Delete room(end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/delete_room/{roomId} ')<br>
+        10-> Delete Property(end point=>' http://localhost:8080/host/{hostId}/delete_property/{propertyId} ')<br>
 <br>
 <br>
 User Functionality.....
