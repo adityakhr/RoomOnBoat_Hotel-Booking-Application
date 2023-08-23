@@ -55,7 +55,7 @@ Host Functionality.....
   <br>
   Host can do...
   <br>
-       1 -> Add property in his profile (end points=>' http://localhost:8080/host/{hostId}/properties ')<br>
+       1 -> Add property in his profile (end point=>' http://localhost:8080/host/{hostId}/properties ')<br>
 	2 -> Add room to his Property (end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/rooms ')<br>
 	3 -> See his property (end point=>' http://localhost:8080/host/{hostId}/properties ')<br>
 	4 -> See his property's rooms (end point=>' http://localhost:8080/host/{hostId}/property/{propertyId}/rooms ')<br>
@@ -74,7 +74,7 @@ User Functionality.....
   <br>
   User can do...
   <br>
-       1 -> Show properties (end points=>'http://localhost:8080/user/get_properties')<br>
+       1 -> Show properties (end point=>'http://localhost:8080/user/get_properties')<br>
 	2 -> Show room of Property (end point=>'http://localhost:8080/user/property/{propertyId}/get_rooms')<br>
 	3 -> See his boking (end point=>'http://localhost:8080/user/{userId}/get_your_booking')<br>
 	4 -> Update email (end point=>'http://localhost:8080/user/{userId}/update_email')<br>
