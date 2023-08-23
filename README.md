@@ -7,11 +7,12 @@ Welcome to the Online Hotel Booking Application System, I named it as "RoomOnBoa
 		<img src="Logo/RoomOnBoatLogo.png" alt="Logo" style="width:50%" >
 </p>
 Here in this project you can find some entity classes which are as follows..<br>
-1. Host<br>
-2. Users<br>
-3. Booking<br>
-4. Property<br>
-5. Room<br>
+1. Admin<br>
+2. Host<br>
+3. Users<br>
+4. Booking<br>
+5. Property<br>
+6. Room<br>
 <br>
 Database Name..<br>
 RoomOnBoat<br>
