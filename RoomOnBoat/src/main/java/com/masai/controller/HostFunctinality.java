@@ -58,12 +58,6 @@ public class HostFunctinality {
 		List<Property> properties =  hfi.fetchAllProperties(hostId,page,count,order);
 		return new ResponseEntity<>(properties,HttpStatus.OK);
 	}
-	@PostMapping("/{hostId}/update_email")
-	public ResponseEntity<Host> updateEmail(@PathVariable("hostId") Integer hostId , @RequestBody @Valid UpdateEmail updatedEmail) throws ApplicationException{
-		log.info("Host is Updating Email in Controller...");
-		Host host =  hfi.updateEmail(hostId, updatedEmail);
-		return new ResponseEntity<>(host,HttpStatus.OK);
-	}
 	@PostMapping("/{hostId}/update_password")
 	public ResponseEntity<Host> updatePassword(@PathVariable("hostId") Integer hostId , @RequestBody @Valid UpdatePassword updatedPassword) throws ApplicationException{
 		log.info("Host is Updating Password in Controller...");

@@ -8,13 +8,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -27,17 +26,23 @@ public class Admin {
 	@NotEmpty(message = "Name can't be Empty")
 	@NotBlank(message = "Name can't be Blank")
 	private String name;
-	@NotNull(message = "Email can't be Null")
-	@NotEmpty(message = "Email can't be Empty")
-	@NotBlank(message = "Email can't be Blank")
-	@Email(message = "Email should be in Proper Format")
+	@NotNull(message = "LastName can't be Null")
+	@NotEmpty(message = "LastName can't be Empty")
+	@NotBlank(message = "LastName can't be Blank")
+	private String lastName;
 	@Column(unique = true)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private String email;
 	@NotNull(message = "Password can't be Null")
 	@NotEmpty(message = "Password can't be Empty")
 	@NotBlank(message = "Password can't be Blank")
+	@Size(min = 8)
+//	@Pattern(regexp = "^[A-Z][a-z]*[!@#$&*~`%^:?/|]{1,}[0-9]*",message = "Should match the pattern like 'Aa...@1' kind of")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@JsonIgnore
 	private final String role="ROLE_ADMIN";
+	public void setEmail(String str){
+		this.email=str;
+	}
 }

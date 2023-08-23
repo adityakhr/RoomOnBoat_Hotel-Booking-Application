@@ -35,41 +35,42 @@ public class UserDetailsServiceClass implements UserDetailsService  {
 	private AdminRepository aRepo;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		String[] splitString = username.trim().split(":");
-		String email=splitString[0].trim();
-		String role=splitString[1].trim();
-		if(role.toLowerCase().equals("user")) {
-			log.info("Checking for User Creds in UserDetails...");
-	        Optional<Users> opt = uRepo.findByEmail(email);
+
+		String[] splitString = username.trim().split("@");
+		String differenciator=splitString[1].trim();
+		if(differenciator.toLowerCase().equals("admin.com")) {
+			log.info("Checking for Admin Creds in UserDetails...");
+			Optional<Admin> opt = aRepo.findByEmail(username);
 			if (opt.isEmpty()) {
-		    	log.info("No User Creds Found...");
-		        throw new BadCredentialsException("No details found with this username: " + email);
-		    }
-		    log.info("User Creds Found...");
-	        Users user = opt.get();
-	        return new User(user.getEmail(), user.getPassword(), authorityGeneration(user.getRole()));
-		}else if(role.toLowerCase().equals("host")) {
+				log.info("No Admin Creds Found...");
+				throw new BadCredentialsException("No details found with this username: " + username);
+			}
+			log.info("Admin Creds Found...");
+			Admin admin = opt.get();
+			return new User(admin.getEmail(), admin.getPassword(), authorityGeneration(admin.getRole()));
+		}else if(differenciator.toLowerCase().equals("host.com")) {
 			log.info("Checking for Host Creds in UserDetails...");
-	        Optional<Host> opt = hRepo.findByEmail(email);
+	        Optional<Host> opt = hRepo.findByEmail(username);
 			if (opt.isEmpty()) {
 		    	log.info("No Host Creds Found...");
-		        throw new BadCredentialsException("No details found with this username: " + email);
+		        throw new BadCredentialsException("No details found with this username: " + username);
 		    }
 		    log.info("Host Creds Found...");
 	        Host host = opt.get();
 	        return new User(host.getEmail(), host.getPassword(), authorityGeneration(host.getRole()));
 		}else{
-			log.info("Checking for Admin Creds in UserDetails...");
-	        Optional<Admin> opt = aRepo.findByEmail(email);
+			log.info("Checking for User Creds in UserDetails...");
+			Optional<Users> opt = uRepo.findByEmail(username);
 			if (opt.isEmpty()) {
-		    	log.info("No Admin Creds Found...");
-		        throw new BadCredentialsException("No details found with this username: " + email);
-		    }
-		    log.info("Admin Creds Found...");
-	        Admin admin = opt.get();
-	        return new User(admin.getEmail(), admin.getPassword(), authorityGeneration(admin.getRole()));
+				log.info("No User Creds Found...");
+				throw new BadCredentialsException("No details found with this username: " + username);
+			}
+			log.info("User Creds Found...");
+			Users user = opt.get();
+			return new User(user.getEmail(), user.getPassword(), authorityGeneration(user.getRole()));
 		}
 	}
+
 	private Collection<? extends GrantedAuthority> authorityGeneration(String role) {
 		List<GrantedAuthority>gAutho = new ArrayList<>();	
 		SimpleGrantedAuthority sGrAutho = new SimpleGrantedAuthority(role);

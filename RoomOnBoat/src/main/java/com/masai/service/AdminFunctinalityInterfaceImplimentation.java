@@ -181,9 +181,9 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 			throw new ApplicationException("Already Exists with these credentials...");
 		}
 		Admin ad = new Admin();
-		ad.setEmail(host.get().getEmail());
 		ad.setName(host.get().getName());
 		ad.setPassword(pass.encode(host.get().getPassword()));
+		ad.setEmail(host.get().getName().trim()+host.get().getLastName().trim()+"@roomonboat.com");
 //		ad.setPassword(host.get().getPassword());
 		aRepo.save(ad);
 		hRepo.delete(host.get());
@@ -201,9 +201,9 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 			throw new ApplicationException("Already Exists with these credentials...");
 		}
 		Admin ad = new Admin();
-		ad.setEmail(user.get().getEmail());
 		ad.setName(user.get().getName());
 		ad.setPassword(pass.encode(user.get().getPassword()));
+		ad.setEmail(user.get().getName().trim()+user.get().getLastName().trim()+"@roomonboat.com");
 //		ad.setPassword(user.get().getPassword());
 		aRepo.save(ad);
 		uRepo.delete(user.get());

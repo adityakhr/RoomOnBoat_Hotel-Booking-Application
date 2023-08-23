@@ -28,7 +28,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if(authentication!=null) {
 			SecretKey key = Keys.hmacShaKeyFor(SecurityContent.JWT_KEY.getBytes());
-			
+
 			String jwtToken = Jwts.builder()
 					.setIssuer("Aditya")
 					.setSubject("jwtToken")
@@ -50,20 +50,14 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter{
 		}
 		return String.join(",",auths);
 	}
-	
+
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-		if(request.getServletPath().equals("/login/user")) {
-			return false;
-		}
-		else if(request.getServletPath().equals("/login/host")) {
-			return false;
-		}
-		else if(request.getServletPath().equals("/login/admin")) {
+		if(request.getServletPath().equals("/logIn")) {
 			return false;
 		}
 		return true;
 	}
-	
+
 
 }

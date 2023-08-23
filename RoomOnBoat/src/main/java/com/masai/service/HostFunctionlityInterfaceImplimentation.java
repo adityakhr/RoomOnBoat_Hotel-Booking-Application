@@ -159,17 +159,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 		hRepo.delete(opt1.get());
 		return host;
 	}
-    @Override
-	public Host updateEmail(Integer hostId, UpdateEmail updatedEmail) throws ApplicationException {
-    	log.info("Host is Updating Email in Service...");
-    	Optional<Host> opt1 = hRepo.findById(hostId);
-		if(opt1.isEmpty()) {
-			throw new ApplicationException("Host Not Found...");
-		}
-		opt1.get().setEmail(updatedEmail.getEmail());
-		hRepo.save(opt1.get());
-		return opt1.get();
-	}
+
     @Override
 	public Host updatePassword(Integer hostId, UpdatePassword updatedPassword) throws ApplicationException {
     	log.info("Host is Updating Password in Service...");
@@ -177,7 +167,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 		if(opt1.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
 		}
-		opt1.get().setEmail(pass.encode(updatedPassword.getPassword()));
+		opt1.get().setPassword(pass.encode(updatedPassword.getPassword()));
 //		opt1.get().setPassword(updatedPassword.getPassword());
 		hRepo.save(opt1.get());
 		return opt1.get();

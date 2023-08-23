@@ -4,17 +4,18 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
 import com.masai.model.Admin;
 import com.masai.model.Host;
 import com.masai.model.Users;
+import com.masai.repository.AdminRepository;
 import com.masai.repository.HostRepository;
 import com.masai.repository.UsersRepository;
+import com.masai.update.LoginClass;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,7 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 	@Autowired
 	private UsersRepository uRepo;
 	@Autowired
-	private UserDetailsServiceClass uds;
+	private AdminRepository aRepo;
 	@Autowired
 	private PasswordEncoder pass;
 	
@@ -47,6 +48,7 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 			throw new ApplicationException("Email Already Exists...");
 		}
 		host.setPassword(pass.encode(host.getPassword()));
+		host.setEmail(host.getName().trim()+host.getLastName().trim()+"@host.com");
 		hRepo.save(host);
 		return host;
 	}
@@ -69,32 +71,66 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 		return user;
 	}
 	
+//	@Override
+//	public String logInUserDetails(LoginClass details) throws ApplicationException, AuthenticationException {
+//		log.info("Checking for User in Service");
+//		UsernamePasswordAuthenticationToken upat= new UsernamePasswordAuthenticationToken(details.getEmail()+":user",details.getPassword());
+//		Authentication auth=authManager.authenticate(upat);
+//		if(auth==null || !auth.isAuthenticated()) {
+//			throw new ApplicationException("Email or Password is wrong...");
+//		}
+//		return auth.getName();
+////		Optional<Users> user = uRepo.findByEmail(auth.getName());
+////		return user.get();
+//	}
+//	@Override
+//	public Host logInHostDetails(@Valid LoginClass details) throws ApplicationException {
+//		log.info("Checking for Host in Service");
+//		UsernamePasswordAuthenticationToken upat= new UsernamePasswordAuthenticationToken(details.getEmail()+":host",details.getPassword());
+//		Authentication auth=authManager.authenticate(upat);
+//		if(!auth.isAuthenticated()) {
+//			throw new ApplicationException("Email or Password is wrong...");
+//		}
+//		Optional<Host> host = hRepo.findByEmail(auth.getName());
+//		return host.get();
+//	}
+//	@Override
+//	public Admin logInAdminDetails(LoginClass details) throws ApplicationException {
+//		log.info("Checking for Admin in Service");
+//		UsernamePasswordAuthenticationToken upat= new UsernamePasswordAuthenticationToken(details.getEmail()+":admin",details.getPassword());
+//		Authentication auth=authManager.authenticate(upat);
+//		if(!auth.isAuthenticated()) {
+//			throw new ApplicationException("Email or Password is wrong...");
+//		}
+//		Optional<Admin> admin = aRepo.findByEmail(auth.getName());
+//		return admin.get();
+//	}
+
 	@Override
-	public Users logInUserDetails(Authentication auth) throws ApplicationException {
+	public Users logInUserDetails(Authentication auth) throws ApplicationException, AuthenticationException {
 		log.info("Checking for User in Service");
-		if(auth==null) {
-			throw new ApplicationException("No User Found with these Credentials");
-		} 
-		Users user = (Users) uds.loadUserByUsername(auth.getName()+":user");
-		return user;
+		if(auth==null){
+			throw new ApplicationException("Email or Password Might Be wrong...");
+		}
+		return uRepo.findByEmail(auth.getName()).get();
 	}
 	@Override
 	public Host logInHostDetails(Authentication auth) throws ApplicationException {
 		log.info("Checking for Host in Service");
-		if(auth==null) {
-			throw new ApplicationException("No Host Found with these Credentials");
+		log.info("Checking for User in Service");
+		if(auth==null){
+			throw new ApplicationException("Email or Password Might Be wrong...");
 		}
-		Host host = (Host) uds.loadUserByUsername(auth.getName()+":host");
-		return host;
+		return hRepo.findByEmail(auth.getName()).get();
 	}
 	@Override
 	public Admin logInAdminDetails(Authentication auth) throws ApplicationException {
 		log.info("Checking for Admin in Service");
-		if(auth==null) {
-			throw new ApplicationException("No Admin Found with these Credentials");
+		log.info("Checking for User in Service");
+		if(auth==null){
+			throw new ApplicationException("Email or Password Might Be wrong...");
 		}
-		Admin admin = (Admin) uds.loadUserByUsername(auth.getName()+":admin");
-		return admin;
+		return aRepo.findByEmail(auth.getName()).get();
 	}
 	
 	

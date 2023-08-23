@@ -18,8 +18,6 @@ public interface HostFunctinalityInterface {
 
 	public Host deleteYourAccount(Integer hostId) throws ApplicationException;
 
-	public Host updateEmail(Integer hostId, UpdateEmail updatedEmail) throws ApplicationException;
-
 	public Host updateName(Integer hostId, UpdateName updatedName) throws ApplicationException;
 
 	public Host updatePassword(Integer hostId, UpdatePassword updatedPassword) throws ApplicationException;
