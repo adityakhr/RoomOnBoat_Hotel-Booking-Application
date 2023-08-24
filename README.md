@@ -89,9 +89,9 @@ User Functionality.....
 	<h3>For all the Show/See requests(Method="GET"), you can get it in pages and can order it(Default->by name/id). For pagination and sorting in Get method endpoints you have to add the thing which are as follows...</h3>
 	<h4 align="center"> ?page={yourPageNumber}&count={ourItemCount}&order={desc/asc}</h4>
 </p>
-<br>
+<!-- <br>
 For running these given endpoints you can visit <a href="http://localhost:8080/swagger-ui.html">here</a> after running application in your local system.<br>
-<br>
+<br> -->
 These were the some functionality of my application.
 <br>
 Thankyou.....
