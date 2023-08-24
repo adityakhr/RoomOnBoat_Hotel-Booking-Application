@@ -184,7 +184,6 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 		ad.setName(host.get().getName());
 		ad.setPassword(pass.encode(host.get().getPassword()));
 		ad.setEmail(host.get().getName().trim()+host.get().getLastName().trim()+"@roomonboat.com");
-//		ad.setPassword(host.get().getPassword());
 		aRepo.save(ad);
 		hRepo.delete(host.get());
 		return ad;
@@ -204,7 +203,6 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 		ad.setName(user.get().getName());
 		ad.setPassword(pass.encode(user.get().getPassword()));
 		ad.setEmail(user.get().getName().trim()+user.get().getLastName().trim()+"@roomonboat.com");
-//		ad.setPassword(user.get().getPassword());
 		aRepo.save(ad);
 		uRepo.delete(user.get());
 		return ad;

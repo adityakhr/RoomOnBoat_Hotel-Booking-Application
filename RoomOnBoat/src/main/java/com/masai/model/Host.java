@@ -40,7 +40,7 @@ public class Host {
 	@NotEmpty(message = "Password can't be Empty")
 	@NotBlank(message = "Password can't be Blank")
 	@Size(min = 8,message = "size must be greater than or equal to 8")
-//	@Pattern(regexp = "^[A-Z][a-z]{1,}[!@#$&*~`%^:?/|]{1,}[0-9]{1,}",message = "Should match the pattern like 'Aa...@1' kind of")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!]).+$",message = "Should match the pattern like 'Aa...@1' kind of")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@JsonIgnore

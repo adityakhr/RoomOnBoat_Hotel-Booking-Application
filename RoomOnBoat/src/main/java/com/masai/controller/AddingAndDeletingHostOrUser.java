@@ -36,33 +36,6 @@ public class AddingAndDeletingHostOrUser {
 		Users userr=asi.addUser(user);
 		return new ResponseEntity<>(userr,HttpStatus.ACCEPTED);
 	}
-//	@PostMapping("/add/admin")
-//	public ResponseEntity<Admin> addNewUser() throws ApplicationException{
-//		log.info("Adding new User in controllerPackage...");
-//		Admin ad = asi.addAdmin();
-//		return new ResponseEntity<>(ad,HttpStatus.ACCEPTED);
-//	}
-	
-		
-//	::::::LOGIN END-POINTS::::::
-//	@PostMapping("/login/user")
-//	public ResponseEntity<String> logInUserDetails(@RequestBody @Valid LoginClass loginDetails) throws ApplicationException {
-//		log.info("LogIn ad User in controllerPackage...");
-//		String user= asi.logInUserDetails(loginDetails);
-//		return new ResponseEntity<>(user,HttpStatus.ACCEPTED);
-//	}
-//	@PostMapping("/login/host")
-//	public ResponseEntity<Host> logInHostDetails(@RequestBody @Valid LoginClass loginDetails) throws ApplicationException {
-//		log.info("LogIn ad Host in controllerPackage...");
-//		Host host =asi.logInHostDetails(loginDetails);
-//		return new ResponseEntity<>(host,HttpStatus.ACCEPTED);
-//	}
-//	@PostMapping("/login/admin")
-//	public ResponseEntity<Admin> logInAdminDetails(@RequestBody @Valid LoginClass loginDetails) throws ApplicationException {
-//		log.info("LogIn ad Admin in controllerPackage...");
-//		Admin admin =asi.logInAdminDetails(loginDetails);
-//		return new ResponseEntity<>(admin,HttpStatus.ACCEPTED);
-//	}
 	@GetMapping("/logIn")
 	public ResponseEntity<Object> logInUserDetails(Authentication auth) throws ApplicationException {
 		log.info("LogIn in controllerPackage...");

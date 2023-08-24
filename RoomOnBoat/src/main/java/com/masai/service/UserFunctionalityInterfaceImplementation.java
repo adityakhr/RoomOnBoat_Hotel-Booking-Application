@@ -60,6 +60,10 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 	@Override
 	public List<Room> getRooms(Integer propertyId, Integer page, Integer count, String order) throws ApplicationException {
 		log.info("User is Getting Property's all Room in Service....");
+		Optional<Property>prop=pRepo.findById(propertyId);
+		if(prop.isEmpty()){
+			throw new ApplicationException("Property Not Found...");
+		}
 		Sort sort=null;
 		if(order.toLowerCase().equals("desc")) {
 			sort =Sort.by("name").descending();
@@ -113,7 +117,6 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 			throw new ApplicationException("User Not Found...");
 		}
 		opt1.get().setPassword(pass.encode(updatedPassword.getPassword()));
-//		opt1.get().setPassword(updatedPassword.getPassword());
 		uRepo.save(opt1.get());
 		return opt1.get();
 	}
@@ -125,6 +128,7 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 			throw new ApplicationException("User Not Found...");
 		}
 		opt1.get().setName(updatedName.getName());
+		opt1.get().setLastName(updatedName.getLastName());
 		uRepo.save(opt1.get());
 		return opt1.get();
 	}
@@ -229,9 +233,12 @@ public class UserFunctionalityInterfaceImplementation implements UserFunctionali
 		if(opt2.isEmpty()) {
 			throw new ApplicationException("Booking Not Found...");
 		}
+		if(opt1.get().getUserId()!=opt2.get().getUser().getUserId()){
+			throw new ApplicationException("This Booking Doesn't Belong To This User...");
+		}
 		for(Room r : opt2.get().getRooms()) {
 			if(r.getStatus().toLowerCase().equals("unavailable")) {
-				throw new ApplicationException("May One Of Room Has Taken...");
+				throw new ApplicationException("May roomId: "+r.getRoomId()+" Room Has Taken...");
 			}
 			r.setStatus("unavailable");
 		}

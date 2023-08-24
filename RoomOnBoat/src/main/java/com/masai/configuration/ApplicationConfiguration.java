@@ -39,11 +39,10 @@ public class ApplicationConfiguration {
 				})
 				.authorizeHttpRequests(auth ->{
 					auth
-//					.requestMatchers("/add/users","/add/hosts","/login/host","/login/user","/login/admin","/logout").permitAll()
+							.requestMatchers("/swagger-ui*/**","/v3/api-docs/**","/logIn","/add/admin","/add/users","/add/hosts","/user/get_properties","/user/property/{propertiId}/get_rooms").permitAll()
 							.requestMatchers("/host/**").hasRole("HOST")
 							.requestMatchers("/admin/**").hasRole("ADMIN")
-							.requestMatchers("/user/**").hasRole("USER")
-							.requestMatchers("/swagger-ui*/**","/v3/api-docs/**","/logIn","/add/admin","/add/users","/add/hosts","/user/get_properties","/user/property/{propertiId}/get_rooms").permitAll();
+							.requestMatchers("/user/**").hasRole("USER");
 				})
 				.csrf(csrf -> csrf.disable())
 				.addFilterAfter(new JwtTokenGeneratorFilter(),BasicAuthenticationFilter.class)

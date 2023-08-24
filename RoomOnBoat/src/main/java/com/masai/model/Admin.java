@@ -36,8 +36,8 @@ public class Admin {
 	@NotNull(message = "Password can't be Null")
 	@NotEmpty(message = "Password can't be Empty")
 	@NotBlank(message = "Password can't be Blank")
-	@Size(min = 8)
-//	@Pattern(regexp = "^[A-Z][a-z]*[!@#$&*~`%^:?/|]{1,}[0-9]*",message = "Should match the pattern like 'Aa...@1' kind of")
+	@Size(min = 8,message = "size must be greater than or equal to 8")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!]).+$",message = "Should match the pattern like 'Aa...@1' kind of")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@JsonIgnore

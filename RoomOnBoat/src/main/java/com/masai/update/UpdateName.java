@@ -14,5 +14,6 @@ public class UpdateName {
 	@NotNull(message = "Name can't be Null")
 	@NotEmpty(message = "Name can't be Empty")
 	@NotBlank(message = "Name can't be Blank")
-	private String name; 
+	private String name;
+	private String lastName;
 }
