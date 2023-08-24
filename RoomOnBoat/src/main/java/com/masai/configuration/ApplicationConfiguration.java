@@ -43,7 +43,7 @@ public class ApplicationConfiguration {
 							.requestMatchers("/host/**").hasRole("HOST")
 							.requestMatchers("/admin/**").hasRole("ADMIN")
 							.requestMatchers("/user/**").hasRole("USER")
-							.requestMatchers("/swagger-ui*/**","/v3/api-docs/**","/logIn","/add/users","/add/hosts","/user/get_proprtties","/user/property/{propertiId}/get_rooms").permitAll();
+							.requestMatchers("/swagger-ui*/**","/v3/api-docs/**","/logIn","/add/admin","/add/users","/add/hosts","/user/get_properties","/user/property/{propertiId}/get_rooms").permitAll();
 				})
 				.csrf(csrf -> csrf.disable())
 				.addFilterAfter(new JwtTokenGeneratorFilter(),BasicAuthenticationFilter.class)

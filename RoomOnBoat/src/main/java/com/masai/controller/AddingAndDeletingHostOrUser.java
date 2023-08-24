@@ -36,6 +36,12 @@ public class AddingAndDeletingHostOrUser {
 		Users userr=asi.addUser(user);
 		return new ResponseEntity<>(userr,HttpStatus.ACCEPTED);
 	}
+//	@PostMapping("/add/admin")
+//	public ResponseEntity<Admin> addNewUser() throws ApplicationException{
+//		log.info("Adding new User in controllerPackage...");
+//		Admin ad = asi.addAdmin();
+//		return new ResponseEntity<>(ad,HttpStatus.ACCEPTED);
+//	}
 	
 		
 //	::::::LOGIN END-POINTS::::::

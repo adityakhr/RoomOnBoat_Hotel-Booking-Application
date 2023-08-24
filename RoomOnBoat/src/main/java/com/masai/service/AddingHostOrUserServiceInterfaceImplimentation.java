@@ -117,7 +117,6 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 	@Override
 	public Host logInHostDetails(Authentication auth) throws ApplicationException {
 		log.info("Checking for Host in Service");
-		log.info("Checking for User in Service");
 		if(auth==null){
 			throw new ApplicationException("Email or Password Might Be wrong...");
 		}
@@ -126,12 +125,20 @@ public class AddingHostOrUserServiceInterfaceImplimentation implements AddingHos
 	@Override
 	public Admin logInAdminDetails(Authentication auth) throws ApplicationException {
 		log.info("Checking for Admin in Service");
-		log.info("Checking for User in Service");
 		if(auth==null){
 			throw new ApplicationException("Email or Password Might Be wrong...");
 		}
 		return aRepo.findByEmail(auth.getName()).get();
 	}
-	
-	
+
+
+//    public Admin addAdmin() {
+//		Admin ad = new Admin();
+//		ad.setEmail("AdityaKhare@roomonboat.com");
+//		ad.setName("Aditya");
+//		ad.setLastName("Khare");
+//		ad.setPassword(pass.encode("aditya@19"));
+//		aRepo.save(ad);
+//		return ad;
+//    }
 }

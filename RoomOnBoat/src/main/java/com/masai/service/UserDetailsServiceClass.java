@@ -38,7 +38,7 @@ public class UserDetailsServiceClass implements UserDetailsService  {
 
 		String[] splitString = username.trim().split("@");
 		String differenciator=splitString[1].trim();
-		if(differenciator.toLowerCase().equals("admin.com")) {
+		if(differenciator.toLowerCase().equals("roomonboat.com")) {
 			log.info("Checking for Admin Creds in UserDetails...");
 			Optional<Admin> opt = aRepo.findByEmail(username);
 			if (opt.isEmpty()) {
