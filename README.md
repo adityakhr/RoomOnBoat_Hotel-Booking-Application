@@ -96,6 +96,7 @@ User Functionality.....
 <!-- <br>
 For running these given endpoints you can visit <a href="http://localhost:8080/swagger-ui.html">here</a> after running application in your local system.<br>
 <br> -->
-These were the some functionality of my application.
+To access these endpoints you have to clone the repo into your system and have to have java17 installed then you can access these endpoints in Postman.<br>
+These were some functionality of my application.
 <br>
-Thankyou.....
+Thank you.....
