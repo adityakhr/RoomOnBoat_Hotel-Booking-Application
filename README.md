@@ -28,7 +28,7 @@ As the names are indicating they are entity classes for generating the various t
 </p>
 
 <br><br>
-I have give three sides in this applications...<br><br>
+I have give three sides in this application...<br><br>
 Admin Functionality.....
   <br>
   <br>
