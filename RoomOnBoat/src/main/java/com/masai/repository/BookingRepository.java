@@ -9,9 +9,13 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.masai.model.Booking;
 
+import java.util.List;
+
 public interface BookingRepository extends  JpaRepository<Booking, Integer>, PagingAndSortingRepository<Booking, Integer> {
 	@Query("Select b From Booking b Where b.user.userId=?1 And b.active=true")
 	Booking findbooking(Integer userId);
+	@Query("Select b From Booking b Where b.user.userId=?1")
+	List<Booking> findUserBooking(Integer userId);
 	@Query("Select b From Booking b Where b.user.userId=?1 And b.active=false")
 	Page<Booking> findBooking(Integer userId, Pageable pageNumber);
 }

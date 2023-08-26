@@ -62,10 +62,10 @@ public class UserDetailsServiceClass implements UserDetailsService  {
 			log.info("Checking for User Creds in UserDetails...");
 			Optional<Users> opt = uRepo.findByEmail(username);
 			if (opt.isEmpty()) {
-				log.info("No User Creds Found...");
+				log.info("No User Email Found...");
 				throw new BadCredentialsException("No details found with this username: " + username);
 			}
-			log.info("User Email Found...");
+			log.info("User Creds Found...");
 			Users user = opt.get();
 			return new User(user.getEmail(), user.getPassword(), authorityGeneration(user.getRole()));
 		}

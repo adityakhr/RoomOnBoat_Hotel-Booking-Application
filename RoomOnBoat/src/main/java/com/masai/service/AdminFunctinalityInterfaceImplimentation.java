@@ -3,6 +3,8 @@ package com.masai.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.masai.model.*;
+import com.masai.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,16 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.ApplicationException;
-import com.masai.model.Admin;
-import com.masai.model.Host;
-import com.masai.model.Property;
-import com.masai.model.Room;
-import com.masai.model.Users;
-import com.masai.repository.AdminRepository;
-import com.masai.repository.HostRepository;
-import com.masai.repository.PropertyRepository;
-import com.masai.repository.RoomRepository;
-import com.masai.repository.UsersRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +30,8 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 	private PropertyRepository pRepo;
 	@Autowired
 	private AdminRepository aRepo;
+	@Autowired
+	private BookingRepository bRepo;
 	@Autowired
 	private PasswordEncoder pass;
 	
@@ -182,7 +176,8 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 		}
 		Admin ad = new Admin();
 		ad.setName(host.get().getName());
-		ad.setPassword(pass.encode(host.get().getPassword()));
+		ad.setLastName(host.get().getLastName());
+		ad.setPassword(host.get().getPassword());
 		ad.setEmail(host.get().getName().trim()+host.get().getLastName().trim()+"@roomonboat.com");
 		aRepo.save(ad);
 		hRepo.delete(host.get());
@@ -201,8 +196,15 @@ public class AdminFunctinalityInterfaceImplimentation implements AdminFunctional
 		}
 		Admin ad = new Admin();
 		ad.setName(user.get().getName());
-		ad.setPassword(pass.encode(user.get().getPassword()));
+		ad.setLastName(user.get().getLastName());
+		ad.setPassword(user.get().getPassword());
 		ad.setEmail(user.get().getName().trim()+user.get().getLastName().trim()+"@roomonboat.com");
+		List<Booking> book=bRepo.findUserBooking(user.get().getUserId());
+		if(book!=null && !book.isEmpty()){
+			for(Booking b : book){
+				b.setUser(null);
+			}
+		}
 		aRepo.save(ad);
 		uRepo.delete(user.get());
 		return ad;
