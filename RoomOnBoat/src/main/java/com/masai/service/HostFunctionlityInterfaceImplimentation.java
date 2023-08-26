@@ -247,7 +247,7 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 			throw new ApplicationException("Rooms Not Found...");
 		}
 		for(Room room : rooms) {
-			room.setStatus("Available");
+			room.setStatus("available");
 			room.setBooking(null);
 		}
 		booking.get().setRooms(rooms);
