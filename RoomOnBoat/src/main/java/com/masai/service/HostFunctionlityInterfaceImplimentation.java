@@ -66,6 +66,9 @@ public class HostFunctionlityInterfaceImplimentation implements HostFunctinality
 	@Override
 	public Room addRoomToProperty(Room room, Integer propertyId, Integer hostId) throws ApplicationException {
 		log.info("Host is Adding Property's new Room in Service...");
+		if(!room.getStatus().toLowerCase().equals("available") && !room.getStatus().toLowerCase().equals("unavailable")){
+			throw new ApplicationException("Error Occured Due To Room Status It Should Be Available Or Unavailable Only...");
+		}
 		Optional<Host> optt = hRepo.findById(hostId);
 		if(optt.isEmpty()) {
 			throw new ApplicationException("Host Not Found...");
