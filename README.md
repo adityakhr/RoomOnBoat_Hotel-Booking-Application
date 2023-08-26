@@ -80,8 +80,7 @@ User Functionality.....
   <br>
   User can do...
   <br>
-       
-	1 -> See his boking (end point=>'http://localhost:8080/user/{userId}/get_your_booking')<br>
+  	1 -> See his boking (end point=>'http://localhost:8080/user/{userId}/get_your_booking')<br>
 	2 -> Update email (end point=>'http://localhost:8080/user/{userId}/update_email')<br>
 	3 -> Update password(end point=>'http://localhost:8080/user/{userId}/update_password')<br>
 	4 -> Update name(end point=>'http://localhost:8080/user/{userId}/update_name')<br>
